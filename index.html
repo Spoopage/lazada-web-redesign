@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazada Indonesia | 12.12 Mega Sale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #f51a76;
+            --secondary: #4965e6;
+            --accent: #cd252d;
+            --dark-bg: #1a1a1a;
+            --light-bg: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+            --gradient-primary: linear-gradient(135deg, #f51a76 0%, #cd252d 100%);
+            --gradient-secondary: linear-gradient(135deg, #4965e6 0%, #f51a76 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: var(--text-primary);
+            background: var(--light-bg);
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--light-bg);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar-logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .navbar-search {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: var(--light-bg);
+            border: 2px solid var(--primary);
+            border-radius: 24px;
+            padding: 8px 16px;
+            gap: 8px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background: transparent;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-login {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-signup {
+            padding: 8px 16px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(245, 26, 118, 0.3);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 12px 28px;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            padding: 12px 28px;
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* ========== CATEGORIES ========== */
+        .categories {
+            max-width: 1400px;
+            margin: -30px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: #f9f9f9;
+        }
+
+        .category-card:hover {
+            border-color: var(--primary);
+            background: rgba(245, 26, 118, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .category-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .category-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* ========== PROMO SECTION ========== */
+        .promo-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .promo-banner {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .promo-banner::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        .promo-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .promo-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .promo-content p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .promo-image {
+            text-align: center;
+            font-size: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ========== PRODUCTS ========== */
+        .products-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+        }
+
+        .product-info {
+            padding: 12px;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .product-rating {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .navbar-search {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .promo-banner {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .promo-banner {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .product-card {
+                border-radius: 6px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-logo">L</div>
+            <div class="navbar-search">
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari produk favorit Anda...">
+                    <button>🔍</button>
+                </div>
+            </div>
+            <div class="navbar-actions">
+                <a href="#" class="navbar-link">Kategori</a>
+                <a href="#" class="navbar-link">Promo</a>
+                <a href="#" class="navbar-link">Bantuan</a>
+                <button class="btn-login">Masuk</button>
+                <button class="btn-signup">Daftar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎉 12.12 Mega Sale Dimulai</div>
+            <h1>Belanja Hemat Hingga 90%</h1>
+            <p>Jangan lewatkan penawaran spektakuler terbesar tahun ini. Ribuan produk pilihan dengan harga terbaik menanti Anda.</p>
+            <div class="hero-cta">
+                <button class="btn-primary">Mulai Belanja</button>
+                <button class="btn-secondary">Lihat Penawaran</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+        <div class="categories-grid">
+            <div class="category-card">
+                <div class="category-icon">👗</div>
+                <div class="category-name">Fashion</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <div class="category-name">Elektronik</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <div class="category-name">Rumah</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💄</div>
+                <div class="category-name">Kecantikan</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🍔</div>
+                <div class="category-name">Makanan</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">⚽</div>
+                <div class="category-name">Olahraga</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🚗</div>
+                <div class="category-name">Otomotif</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <div class="category-name">Buku</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO BANNER -->
+    <section class="promo-section">
+        <div class="promo-banner">
+            <div class="promo-content">
+                <div class="promo-badge">Flash Sale</div>
+                <h2>Flash Sale<br>Setiap Hari</h2>
+                <p>Dapatkan produk pilihan dengan diskon fantastis. Stok terbatas, jangan sampai kehabisan!</p>
+                <button class="btn-primary">Lihat Flash Sale</button>
+            </div>
+            <div class="promo-image">⚡</div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="products-section">
+        <h2 class="section-title">Produk Pilihan</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-name">Kaos Pria Premium Cotton</div>
+                    <div class="product-price">Rp 89.000</div>
+                    <div class="product-rating">⭐ 4.9 (2.3K)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="product-name">Smartwatch Digital 2024</div>
+                    <div class="product-price">Rp 299.000</div>
+                    <div class="product-rating">⭐ 4.8 (1.8K)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👟</div>
+                <div class="product-info">
+                    <div class="product-name">Sepatu Sneaker Sporty</div>
+                    <div class="product-price">Rp 149.000</div>
+                    <div class="product-rating">⭐ 4.7 (3.2K)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <div class="product-name">Headphone Wireless Bass</div>
+                    <div class="product-price">Rp 199.000</div>
+                    <div class="product-rating">⭐ 4.9 (4.1K)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">💍</div>
+                <div class="product-info">
+                    <div class="product-name">Gelang Elegant Premium</div>
+                    <div class="product-price">Rp 79.000</div>
+                    <div class="product-rating">⭐ 4.6 (982)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🎒</div>
+                <div class="product-info">
+                    <div class="product-name">Tas Backpack Trendy</div>
+                    <div class="product-price">Rp 179.000</div>
+                    <div class="product-rating">⭐ 4.8 (2.5K)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🧴</div>
+                <div class="product-info">
+                    <div class="product-name">Skincare Lengkap Set</div>
+                    <div class="product-price">Rp 259.000</div>
+                    <div class="product-rating">⭐ 4.9 (5.4K)</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🎮</div>
+                <div class="product-info">
+                    <div class="product-name">Gaming Mouse RGB</div>
+                    <div class="product-price">Rp 169.000</div>
+                    <div class="product-rating">⭐ 4.8 (1.6K)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Lazada</h3>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kategori</h3>
+                <ul>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Elektronik</a></li>
+                    <li><a href="#">Rumah & Taman</a></li>
+                    <li><a href="#">Kecantikan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Bantuan</h3>
+                <ul>
+                    <li><a href="#">Pusat Bantuan</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                    <li><a href="#">Kebijakan Pengiriman</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ikuti Kami</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Lazada Indonesia. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+</body>
+</html>
