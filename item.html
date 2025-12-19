@@ -1001,7 +1001,7 @@
                 <div class="search-bar">
                     <!-- Value default "Baju pria" -->
                     <input type="text" value="Pakaian pria">
-                    <button>🔍</button>
+                    <button onclick="window.location.href='search.html'">🔍</button>
                 </div>
                 <div class="navbar-cart" onclick="toggleCartManual()">🛒</div>
             </div>
@@ -1326,7 +1326,7 @@
                 <span class="cart-total-price" id="cartTotal">Rp 0</span>
             </div>
             <button class="btn-checkout-sidebar" id="checkoutBtn">Checkout (0 item)</button>
-            <a href="#" class="view-cart-text">Lihat troli</a>
+            <a href="cart.html" class="view-cart-text">Lihat troli</a>
         </div>
         <div class="cart-sidebar-list" id="cartList">
         </div>
@@ -1544,6 +1544,55 @@
         renderCart();
         openCart();
     };
+
+    // Connect checkout actions to checkout page
+    // When user clicks the sidebar checkout button, go to checkout.html
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function () {
+            window.location.href = 'checkout.html';
+        });
+    }
+
+    // Beli Sekarang: add current selection and go to cart.html
+    document.querySelectorAll('.btn-buy-now').forEach(function(btn){
+        btn.addEventListener('click', function(){
+            // gather quantity and selected variants
+            var qtyInput = document.querySelector('.quantity-control .input-qty');
+            var qty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
+
+            var variantSections = document.querySelectorAll('.variant-section');
+            var color = '';
+            var size = '';
+            if(variantSections.length > 0){
+                var colorSelected = variantSections[0].querySelector('.btn-variant.selected');
+                if(colorSelected) color = colorSelected.textContent.trim();
+            }
+            if(variantSections.length > 1){
+                var sizeSelected = variantSections[1].querySelector('.btn-variant.selected');
+                if(sizeSelected) size = sizeSelected.textContent.trim();
+            }
+
+            const product = {
+                id: 101,
+                name: `Kaos Polos Pria Cotton Combed 30s Premium${color? ' - '+color:''}${size? ' / '+size:''}`,
+                price: 35000,
+                qty: qty,
+                checked: true,
+                img: "https://via.placeholder.com/100.png?text=Kaos"
+            };
+
+            const existing = itemsInCart.find(i => i.id === product.id && i.name === product.name);
+            if (existing) {
+                existing.qty += product.qty;
+            } else {
+                itemsInCart.push(product);
+            }
+
+            renderCart();
+            // Navigate to checkout page
+            window.location.href = 'checkout.html';
+        });
+    });
 
     // Close on ESC
     document.addEventListener('keydown', (e) => {
