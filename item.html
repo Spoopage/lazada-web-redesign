@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaos Polos Pria Cotton Combed 30s Premium | Lazada Indonesia</title>
+    <style>
+        /* =========================================
+           1. CORE STYLES (SAMA PERSIS DENGAN SEBELUMNYA)
+           ========================================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #f51a76;
+            --secondary: #4965e6;
+            --dark-bg: #1a1a1a;
+            --light-bg: #ffffff;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+            --gradient-primary: linear-gradient(135deg, #f51a76 0%, #cd252d 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            background: #f5f5f5;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--light-bg);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .navbar-logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .navbar-search {
+            flex: 1;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-bar {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            background: var(--light-bg);
+            border: 2px solid var(--primary);
+            border-radius: 24px;
+            padding: 8px 16px;
+            gap: 8px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            background: transparent;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .navbar-cart {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-right: 10px;
+            color: var(--text-primary);
+        }
+        
+        .navbar-cart:hover {
+            transform: scale(1.1);
+            color: var(--primary);
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-login {
+            padding: 8px 16px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-signup {
+            padding: 8px 16px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(245, 26, 118, 0.3);
+        }
+
+        /* =========================================
+           2. ITEM PAGE SPECIFIC STYLES
+           ========================================= */
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px; 
+        }
+        .breadcrumb a { text-decoration: none; color: var(--text-secondary); }
+        .breadcrumb span { margin: 0 8px; }
+
+        /* PRODUCT CARD */
+        .product-detail-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 450px 1fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 24px; /* Jarak ke kolom review */
+        }
+
+        /* Gallery Styles */
+        .gallery-container { position: sticky; top: 90px; }
+        .main-image { width: 100%; aspect-ratio: 1/1; background: #f9f9f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 150px; margin-bottom: 16px; border: 1px solid #eee; }
+        .thumbnail-list { display: flex; gap: 12px; overflow-x: auto; }
+        .thumbnail { width: 70px; height: 70px; border-radius: 6px; background: #f9f9f9; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .thumbnail.active { border-color: var(--primary); }
+
+        /* Right Info Styles */
+        .product-title { font-size: 24px; font-weight: 700; line-height: 1.4; color: var(--text-primary); margin-bottom: 12px; }
+        .rating-sold { display: flex; align-items: center; gap: 16px; font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .rating-stars { color: #ffbf00; }
+        .divider { width: 1px; height: 16px; background: #ddd; }
+
+        .price-area { margin-bottom: 30px; }
+        .price-main { font-size: 36px; font-weight: 800; color: var(--primary); }
+        .price-origin { font-size: 16px; text-decoration: line-through; color: #999; margin-left: 8px; }
+        .discount-badge { background: #ffeef2; color: var(--primary); padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-left: 8px; }
+
+        /* Selection */
+        .variant-section { margin-bottom: 24px; }
+        .variant-label { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: var(--text-secondary); }
+        .variant-options { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn-variant { padding: 8px 24px; border: 1px solid var(--border); background: white; border-radius: 6px; cursor: pointer; font-size: 14px; color: var(--text-primary); transition: all 0.2s; }
+        .btn-variant:hover { border-color: var(--primary); color: var(--primary); }
+        .btn-variant.selected { border-color: var(--primary); color: var(--primary); background: #ffeef2; font-weight: 600; }
+
+        .quantity-control { display: flex; align-items: center; gap: 0; border: 1px solid var(--border); border-radius: 6px; width: fit-content; margin-top: 8px; }
+        .btn-qty { width: 36px; height: 36px; background: #f9f9f9; border: none; cursor: pointer; font-size: 16px; }
+        .input-qty { width: 50px; height: 36px; text-align: center; border: none; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+
+        .action-buttons { display: flex; gap: 16px; margin-top: 40px; margin-bottom: 30px; }
+        .btn-buy-now { flex: 1; padding: 14px; background: var(--gradient-primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(245, 26, 118, 0.3); }
+        .btn-add-cart { flex: 1; padding: 14px; background: white; color: var(--primary); border: 2px solid var(--primary); border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+
+        .delivery-info { background: #fafafa; border-radius: 8px; padding: 20px; border: 1px solid #eee; }
+        .delivery-header { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .delivery-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 13px; }
+        .delivery-icon { font-size: 18px; min-width: 24px; text-align: center; }
+        .delivery-text { flex: 1; line-height: 1.5; }
+
+        /* =========================================
+           3. REVIEW SECTION STYLES (BARU)
+           ========================================= */
+        .review-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+
+        .section-title { font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); }
+
+        .review-summary {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            background: #fdfdfd;
+            border: 1px solid #f0f0f0;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .rating-big-box { text-align: center; min-width: 120px; }
+        .rating-score { font-size: 48px; font-weight: 800; color: var(--primary); line-height: 1; }
+        .rating-sub { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+        
+        .rating-bars { flex: 1; border-left: 1px solid #eee; padding-left: 40px; }
+        .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; font-size: 13px; color: var(--text-secondary); }
+        .bar-container { flex: 1; max-width: 200px; height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }
+        .bar-fill { height: 100%; background: #ffbf00; border-radius: 3px; }
+
+        .review-filters { display: flex; gap: 12px; margin-bottom: 24px; }
+        .btn-filter { padding: 6px 16px; border: 1px solid #ddd; background: white; border-radius: 4px; font-size: 13px; cursor: pointer; }
+        .btn-filter.active { border-color: var(--primary); color: var(--primary); background: #ffeef2; font-weight: 600; }
+
+        .review-list { display: flex; flex-direction: column; gap: 24px; }
+        .review-item { border-bottom: 1px solid #eee; padding-bottom: 24px; }
+        .review-item:last-child { border-bottom: none; }
+        
+        .review-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .reviewer-name { font-size: 13px; font-weight: 600; }
+        .review-date { font-size: 12px; color: #999; }
+        .review-stars { color: #ffbf00; font-size: 12px; margin-bottom: 8px; }
+        .review-text { font-size: 14px; line-height: 1.5; color: #333; margin-bottom: 12px; }
+        .review-variant { font-size: 12px; color: #999; margin-bottom: 12px; }
+        
+        .review-images { display: flex; gap: 8px; }
+        .review-img { width: 60px; height: 60px; background: #f0f0f0; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; }
+
+        /* FOOTER (Sama) */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 900px) {
+            .product-detail-card { grid-template-columns: 1fr; gap: 30px; }
+            .gallery-container { position: static; }
+            .review-summary { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .rating-bars { border-left: none; padding-left: 0; width: 100%; }
+            .search-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <!-- Logo "L" sesuai Index -->
+            <div class="navbar-logo" onclick="window.location.href='index.html'">L</div>
+            <div class="navbar-search">
+                <div class="search-bar">
+                    <!-- Value default "Baju pria" -->
+                    <input type="text" value="Pakaian pria">
+                    <button>🔍</button>
+                </div>
+                <div class="navbar-cart">🛒</div>
+            </div>
+
+            <div class="navbar-actions">
+                <a href="#" class="navbar-link">Kategori</a>
+                <a href="#" class="navbar-link">Promo</a>
+                <a href="#" class="navbar-link">Bantuan</a>
+                <button class="btn-login">Masuk</button>
+                <button class="btn-signup">Daftar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Beranda</a> <span>></span>
+            <a href="search.html">Pakaian Pria</a> <span>></span>
+            <a href="search.html">Kaos & Polo</a> <span>></span>
+            <span style="color: var(--text-primary); font-weight: 500;">Kaos Polos Premium</span>
+        </div>
+
+        <!-- PRODUCT DETAILS -->
+        <div class="product-detail-card">
+            
+            <!-- LEFT: IMAGES -->
+            <div class="gallery-container">
+                <div class="main-image">👕</div>
+                <div class="thumbnail-list">
+                    <div class="thumbnail active">👕</div>
+                    <div class="thumbnail">👚</div>
+                    <div class="thumbnail">👔</div>
+                    <div class="thumbnail">🧥</div>
+                </div>
+            </div>
+
+            <!-- RIGHT: INFO -->
+            <div class="product-info">
+                <h1 class="product-title">Kaos Polos Pria Cotton Combed 30s Premium - Hitam, Adem & Menyerap Keringat</h1>
+                
+                <div class="rating-sold">
+                    <div class="rating-stars">⭐⭐⭐⭐⭐ 4.9</div>
+                    <div class="divider"></div>
+                    <div>2.4k Penilaian</div>
+                    <div class="divider"></div>
+                    <div>10rb+ Terjual</div>
+                </div>
+
+                <div class="price-area">
+                    <div style="display: flex; align-items: center;">
+                        <span class="price-main">Rp 35.000</span>
+                        <span class="discount-badge">-65%</span>
+                    </div>
+                    <div class="price-origin">Rp 100.000</div>
+                </div>
+
+                <div class="variant-section">
+                    <div class="variant-label">Warna: Hitam</div>
+                    <div class="variant-options">
+                        <button class="btn-variant selected">Hitam</button>
+                        <button class="btn-variant">Putih</button>
+                        <button class="btn-variant">Navy</button>
+                        <button class="btn-variant">Maroon</button>
+                    </div>
+                </div>
+
+                <div class="variant-section">
+                    <div class="variant-label">Ukuran: L</div>
+                    <div class="variant-options">
+                        <button class="btn-variant">S</button>
+                        <button class="btn-variant">M</button>
+                        <button class="btn-variant selected">L</button>
+                        <button class="btn-variant">XL</button>
+                    </div>
+                </div>
+
+                <div class="variant-section">
+                    <div class="variant-label">Kuantitas</div>
+                    <div class="quantity-control">
+                        <button class="btn-qty">-</button>
+                        <input type="text" class="input-qty" value="1">
+                        <button class="btn-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-buy-now">Beli Sekarang</button>
+                    <button class="btn-add-cart">Tambah ke Troli</button>
+                </div>
+
+                <div class="delivery-info">
+                    <div class="delivery-header">🚚 Pilihan Pengiriman</div>
+                    <div class="delivery-item">
+                        <div class="delivery-icon">📍</div>
+                        <div class="delivery-text">
+                            <strong>Dikirim ke Jakarta Pusat</strong><br>
+                            <span style="color: #666;">Ongkir mulai Rp 9.000</span>
+                        </div>
+                        <div style="color: var(--primary); cursor: pointer;">Ubah</div>
+                    </div>
+                    <div class="delivery-item">
+                        <div class="delivery-icon">⚡</div>
+                        <div class="delivery-text">
+                            <strong>Standar (2-4 Hari)</strong><br>
+                            <span style="color: #666;">Estimasi tiba 12 - 14 Jan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: REVIEW SECTION (Sesuai Request) -->
+        <div class="review-section">
+            <h3 class="section-title">Penilaian & Ulasan Produk</h3>
+            
+            <!-- Summary Rating -->
+            <div class="review-summary">
+                <div class="rating-big-box">
+                    <div class="rating-score">4.9<span style="font-size: 24px; color: #999;">/5</span></div>
+                    <div class="rating-stars" style="font-size: 20px; margin-top: 4px;">⭐⭐⭐⭐⭐</div>
+                    <div class="rating-sub">2.4k Ulasan</div>
+                </div>
+                
+                <div class="rating-bars">
+                    <div class="bar-row">
+                        <span style="width: 60px;">Bintang 5</span>
+                        <div class="bar-container"><div class="bar-fill" style="width: 90%;"></div></div>
+                        <span>2.1k</span>
+                    </div>
+                    <div class="bar-row">
+                        <span style="width: 60px;">Bintang 4</span>
+                        <div class="bar-container"><div class="bar-fill" style="width: 8%;"></div></div>
+                        <span>200</span>
+                    </div>
+                    <div class="bar-row">
+                        <span style="width: 60px;">Bintang 3</span>
+                        <div class="bar-container"><div class="bar-fill" style="width: 1%;"></div></div>
+                        <span>50</span>
+                    </div>
+                    <div class="bar-row">
+                        <span style="width: 60px;">Bintang 2</span>
+                        <div class="bar-container"><div class="bar-fill" style="width: 0.5%;"></div></div>
+                        <span>10</span>
+                    </div>
+                    <div class="bar-row">
+                        <span style="width: 60px;">Bintang 1</span>
+                        <div class="bar-container"><div class="bar-fill" style="width: 0.5%;"></div></div>
+                        <span>5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="review-filters">
+                <button class="btn-filter active">Semua</button>
+                <button class="btn-filter">Bintang 5 (2.1k)</button>
+                <button class="btn-filter">Bintang 4 (200)</button>
+                <button class="btn-filter">Dengan Media (850)</button>
+            </div>
+
+            <!-- Review List -->
+            <div class="review-list">
+                
+                <!-- Review 1 -->
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="reviewer-name">budi_santoso88</span>
+                        <span class="review-date">2 Hari lalu</span>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="review-variant">Varian: Hitam, Ukuran: L</div>
+                    <p class="review-text">Barangnya mantap gan! Bahannya adem banget dipakai, menyerap keringat. Jahitan rapi, pengiriman juga cepet banget. Recommended seller pokoknya!</p>
+                    <div class="review-images">
+                        <div class="review-img">👕</div>
+                        <div class="review-img">📦</div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="reviewer-name">siti.aminah</span>
+                        <span class="review-date">1 Minggu lalu</span>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="review-variant">Varian: Navy, Ukuran: M</div>
+                    <p class="review-text">Suka banget sama warnanya, sesuai gambar. Ukurannya juga pas di badan suami saya. Bakal langganan nih kalo ada promo lagi. Makasih Lazada!</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-item">
+                    <div class="review-header">
+                        <span class="reviewer-name">ahmad_dhani</span>
+                        <span class="review-date">2 Minggu lalu</span>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐</div>
+                    <div class="review-variant">Varian: Putih, Ukuran: XL</div>
+                    <p class="review-text">Bahan bagus, cuma agak tipis dikit buat yang warna putih, jadi agak nerawang. Tapi worth it lah dengan harga segini. Pengiriman aman.</p>
+                    <div class="review-images">
+                        <div class="review-img">👕</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Tentang Lazada</h3>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kategori</h3>
+                <ul>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Elektronik</a></li>
+                    <li><a href="#">Rumah & Taman</a></li>
+                    <li><a href="#">Kecantikan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Bantuan</h3>
+                <ul>
+                    <li><a href="#">Pusat Bantuan</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                    <li><a href="#">Kebijakan Pengiriman</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ikuti Kami</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Lazada Indonesia. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

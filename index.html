@@ -63,10 +63,14 @@
 
         .navbar-search {
             flex: 1;
-            max-width: 500px;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .search-bar {
+            flex: 1;
             display: flex;
             align-items: center;
             background: var(--light-bg);
@@ -94,6 +98,19 @@
             color: var(--primary);
             cursor: pointer;
             font-size: 18px;
+        }
+
+        .navbar-cart {
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-right: 10px;
+            color: var(--text-primary);
+        }
+        
+        .navbar-cart:hover {
+            transform: scale(1.1);
+            color: var(--primary);
         }
 
         .navbar-actions {
@@ -550,6 +567,7 @@
                     <input type="text" placeholder="Cari produk favorit Anda...">
                     <button>🔍</button>
                 </div>
+                <div class="navbar-cart">🛒</div>
             </div>
             <div class="navbar-actions">
                 <a href="#" class="navbar-link">Kategori</a>
