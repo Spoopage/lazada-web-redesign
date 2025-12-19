@@ -196,10 +196,18 @@
 
         /* Gallery Styles */
         .gallery-container { position: sticky; top: 90px; }
-        .main-image { width: 100%; aspect-ratio: 1/1; background: #f9f9f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 150px; margin-bottom: 16px; border: 1px solid #eee; }
+        .main-image { width: 100%; aspect-ratio: 1/1; background: #f9f9f9; border-radius: 8px; display: block; overflow: hidden; margin-bottom: 16px; border: 1px solid #eee; position: relative; cursor: zoom-in; }
+        .main-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .thumbnail-list { display: flex; gap: 12px; overflow-x: auto; }
-        .thumbnail { width: 70px; height: 70px; border-radius: 6px; background: #f9f9f9; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .thumbnail { width: 70px; height: 70px; border-radius: 6px; background: #f9f9f9; border: 2px solid transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+        .thumbnail img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .thumbnail.active { border-color: var(--primary); }
+
+        /* Zoom overlay that covers the product-detail-card when hovering main image */
+        .product-detail-card { position: relative; }
+        .zoom-overlay { position: absolute; inset: 0; display: none; z-index: 50; pointer-events: none; }
+        .zoom-overlay.active { display: block; }
+        .zoom-view { position: absolute; width: 60%; height: 80%; right: 6%; top: 8%; border-radius: 8px; background-repeat: no-repeat; background-size: 200%; background-position: center; box-shadow: 0 8px 30px rgba(0,0,0,0.25); transform: translateZ(0); }
 
         /* Right Info Styles */
         .product-title { font-size: 24px; font-weight: 700; line-height: 1.4; color: var(--text-primary); margin-bottom: 12px; }
@@ -225,8 +233,15 @@
         .input-qty { width: 50px; height: 36px; text-align: center; border: none; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
 
         .action-buttons { display: flex; gap: 16px; margin-top: 40px; margin-bottom: 30px; }
-        .btn-buy-now { flex: 1; padding: 14px; background: var(--gradient-primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(245, 26, 118, 0.3); }
-        .btn-add-cart { flex: 1; padding: 14px; background: white; color: var(--primary); border: 2px solid var(--primary); border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+        .btn-buy-now { flex: 1; padding: 14px; background: var(--gradient-primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(245, 26, 118, 0.3); transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.12s ease; }
+        .btn-buy-now:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(245, 26, 118, 0.25); }
+        .btn-buy-now:active { transform: translateY(0) scale(0.98); box-shadow: 0 6px 12px rgba(0,0,0,0.12); opacity: 0.98; }
+        .btn-buy-now:focus { outline: 3px solid rgba(245,26,118,0.12); outline-offset: 2px; }
+
+        .btn-add-cart { flex: 1; padding: 14px; background: white; color: var(--primary); border: 2px solid var(--primary); border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease; }
+        .btn-add-cart:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(73,101,230,0.12); background: linear-gradient(180deg, #fff, #fbfbff); }
+        .btn-add-cart:active { transform: translateY(0) scale(0.99); box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        .btn-add-cart:focus { outline: 3px solid rgba(73,101,230,0.12); outline-offset: 2px; }
 
         .delivery-info { background: #fafafa; border-radius: 8px; padding: 20px; border: 1px solid #eee; }
         .delivery-header { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -387,13 +402,27 @@
             
             <!-- LEFT: IMAGES -->
             <div class="gallery-container">
-                <div class="main-image">👕</div>
-                <div class="thumbnail-list">
-                    <div class="thumbnail active">👕</div>
-                    <div class="thumbnail">👚</div>
-                    <div class="thumbnail">👔</div>
-                    <div class="thumbnail">🧥</div>
+                <div class="main-image" id="mainImageContainer" title="Klik untuk memperbesar">
+                    <img id="mainImage" src="https://via.placeholder.com/800x800.png?text=Kaos" alt="Gambar produk utama">
                 </div>
+                <div class="thumbnail-list" id="thumbnailList">
+                    <button class="thumbnail active" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos">
+                        <img src="https://via.placeholder.com/120x120.png?text=Kaos" alt="Thumb Kaos">
+                    </button>
+                    <button class="thumbnail" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos+Putih">
+                        <img src="https://via.placeholder.com/120x120.png?text=Putih" alt="Thumb Putih">
+                    </button>
+                    <button class="thumbnail" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos+Navy">
+                        <img src="https://via.placeholder.com/120x120.png?text=Navy" alt="Thumb Navy">
+                    </button>
+                    <button class="thumbnail" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos+Outer">
+                        <img src="https://via.placeholder.com/120x120.png?text=Outer" alt="Thumb Outer">
+                    </button>
+                </div>
+            </div>
+            <!-- Zoom overlay; shown on hover and covers product-info temporarily -->
+            <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
+                <div class="zoom-view" id="zoomView"></div>
             </div>
 
             <!-- RIGHT: INFO -->
@@ -614,4 +643,60 @@
     </footer>
 
 </body>
+        <script>
+            // Make variant buttons behave like exclusive options and update labels
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.variant-section').forEach(function(section){
+                    var options = section.querySelectorAll('.btn-variant');
+                    var labelEl = section.querySelector('.variant-label');
+                    // Determine the base label (text before colon) or fallback
+                    var baseLabel = 'Pilihan';
+                    if(labelEl){
+                        var parts = labelEl.textContent.split(':');
+                        baseLabel = parts[0].trim();
+                    }
+
+                    options.forEach(function(btn){
+                        // Ensure accessible state
+                        btn.setAttribute('role','button');
+                        btn.setAttribute('tabindex','0');
+
+                        // Click handler
+                        btn.addEventListener('click', function(){
+                            options.forEach(function(b){ b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); });
+                            btn.classList.add('selected');
+                            btn.setAttribute('aria-pressed','true');
+                            // Update label text
+                            if(labelEl){
+                                var value = btn.textContent.trim();
+                                labelEl.textContent = baseLabel + ': ' + value;
+                            }
+                        });
+
+                        // Keyboard support (Enter / Space)
+                        btn.addEventListener('keydown', function(e){
+                            if(e.key === 'Enter' || e.key === ' '){
+                                e.preventDefault();
+                                btn.click();
+                            }
+                        });
+                    });
+                });
+
+                // Simple quantity control behavior (optional enhancement)
+                var qtyInputs = document.querySelectorAll('.quantity-control');
+                qtyInputs.forEach(function(container){
+                    var dec = container.querySelectorAll('.btn-qty')[0];
+                    var inc = container.querySelectorAll('.btn-qty')[1];
+                    var input = container.querySelector('.input-qty');
+                    if(!dec || !inc || !input) return;
+                    dec.addEventListener('click', function(){
+                        var v = parseInt(input.value) || 1; if(v>1) input.value = v-1;
+                    });
+                    inc.addEventListener('click', function(){
+                        var v = parseInt(input.value) || 1; input.value = v+1;
+                    });
+                });
+            });
+        </script>
 </html>
