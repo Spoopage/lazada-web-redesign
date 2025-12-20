@@ -5,34 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | Lazada Indonesia</title>
     <style>
-        /* =========================================
-           1. CORE STYLES (Konsisten dengan Redesign)
-           ========================================= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* CORE STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #f51a76;
-            --secondary: #4965e6;
-            --bg-page: #f5f5f5;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --border: #e0e0e0;
+            --primary: #f51a76; --secondary: #4965e6; --bg-page: #f5f5f5;
+            --text-primary: #333333; --text-secondary: #666666; --border: #e0e0e0;
             --gradient-primary: linear-gradient(135deg, #f51a76 0%, #cd252d 100%);
         }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-primary); background: var(--bg-page); line-height: 1.5; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-primary);
-            background: var(--bg-page);
-            line-height: 1.5;
-        }
-
-        /* ========== HEADER CHECKOUT (MINIMALIS) ========== */
-        /* Menjawab masukan Sakih: Navbar harus Nampak dan tidak messy [cite: 1, 3] */
+        /* HEADER */
         .checkout-header {
             background: white;
             padding: 15px 0;
@@ -60,7 +42,6 @@
             text-decoration: none;
         }
 
-        /* Stepper untuk membimbing user (Menjawab masukan Nana agar tidak bingung ) */
         .stepper {
             display: flex;
             gap: 20px;
@@ -69,11 +50,11 @@
             color: var(--text-secondary);
         }
 
-        .step.active { color: var(--primary); }
+        .step.active {
+            color: var(--primary);
+        }
 
-        /* =========================================
-           2. CHECKOUT LAYOUT
-           ========================================= */
+        /* LAYOUT */
         .checkout-container {
             max-width: 1200px;
             margin: 30px auto;
@@ -83,14 +64,17 @@
             gap: 24px;
         }
 
-        /* Menghindari space kosong berlebih seperti kritik Petris [cite: 10] */
-        .main-col { display: flex; flex-direction: column; gap: 20px; }
+        .main-col {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
         .card {
             background: white;
             border-radius: 8px;
             padding: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .card-title {
@@ -102,16 +86,14 @@
             gap: 10px;
         }
 
-        /* Alamat Pengiriman */
         .address-box {
-            border: 1px solid var(--primary); /* Highlight penting  */
+            border: 1px solid var(--primary);
             padding: 16px;
             border-radius: 6px;
             background: #fffafa;
             position: relative;
         }
 
-        .address-name { font-weight: 700; margin-bottom: 4px; }
         .btn-change {
             position: absolute;
             top: 16px;
@@ -121,7 +103,7 @@
             text-decoration: none;
         }
 
-        /* Produk Item */
+        /* ORDER ITEM */
         .order-item {
             display: flex;
             gap: 15px;
@@ -129,11 +111,27 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
-        .item-img { width: 80px; height: 80px; background: #eee; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
-        .item-info { flex: 1; }
-        .item-price { font-weight: 700; color: var(--primary); margin-top: 5px; }
+        .item-img {
+            width: 80px;
+            height: 80px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
 
-        /* Pengiriman Section */
+        .item-info {
+            flex: 1;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
         .shipping-option {
             margin-top: 15px;
             padding: 12px;
@@ -144,7 +142,7 @@
             font-size: 14px;
         }
 
-        /* Summary Panel (Sticky) */
+        /* SUMMARY */
         .summary-card {
             position: sticky;
             top: 100px;
@@ -167,7 +165,6 @@
             color: var(--primary);
         }
 
-        /* Highlight Button: Sesuai masukan Petris agar tombol aksi utama sangat menonjol  */
         .btn-pay {
             width: 100%;
             padding: 16px;
@@ -182,14 +179,11 @@
             transition: transform 0.2s;
         }
 
-        .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(245, 26, 118, 0.3); }
-
-        /* Mencegah tombol pesan mengganggu responsivitas (Menjawab Petris ) */
-        .no-chat-allowed { display: none; }
-
-        @media (max-width: 900px) {
-            .checkout-container { grid-template-columns: 1fr; }
+        .btn-pay:hover {
+            transform: translateY(-2px);
         }
+
+        @media (max-width: 900px) { .checkout-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -198,11 +192,7 @@
         <div class="header-content">
             <a href="index.html" class="logo">L</a>
             <div class="stepper">
-                <span class="step active">1. Pengiriman</span>
-                <span>></span>
-                <span class="step">2. Pembayaran</span>
-                <span>></span>
-                <span class="step">3. Selesai</span>
+                <span class="step active">1. Pengiriman</span> <span>></span> <span class="step">2. Pembayaran</span> <span>></span> <span class="step">3. Selesai</span>
             </div>
             <div style="font-size: 12px; color: var(--text-secondary);">Butuh Bantuan?</div>
         </div>
@@ -215,11 +205,8 @@
                 <div class="card-title">📍 Alamat Pengiriman</div>
                 <div class="address-box">
                     <a href="#" class="btn-change">Ubah</a>
-                    <div class="address-name">Budi Santoso (08123456789)</div>
-                    <div style="font-size: 14px; color: var(--text-secondary);">
-                        Jl. Ir. H. Juanda No. 123, Kel. Pucang, Kec. Gubeng, <br>
-                        Kota Surabaya, Jawa Timur, 60282
-                    </div>
+                    <div style="font-weight: 700; margin-bottom: 4px;">Budi Santoso (08123456789)</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);">Jl. Ir. H. Juanda No. 123, Kel. Pucang, Kec. Gubeng, <br>Kota Surabaya, Jawa Timur, 60282</div>
                 </div>
             </section>
 
@@ -227,21 +214,12 @@
                 <div class="card-title">📦 Detail Pesanan</div>
                 <div style="font-size: 13px; font-weight: 600; color: var(--secondary); margin-bottom: 10px;">Lazada Official Store</div>
                 
-                <div class="order-item">
-                    <div class="item-img">👕</div>
-                    <div class="item-info">
-                        <div style="font-size: 14px;">Kaos Polos Pria Cotton Combed 30s Premium</div>
-                        <div style="font-size: 12px; color: #999;">Hitam, XL</div>
-                        <div class="item-price">Rp 35.000</div>
-                    </div>
-                    <div style="font-size: 14px;">x1</div>
+                <div id="orderItemsContainer">
+                    <!-- Item dirender via JS -->
                 </div>
 
                 <div class="shipping-option">
-                    <div>
-                        <strong>Standar</strong><br>
-                        <span style="font-size: 12px; color: #777;">Estimasi tiba 24 - 26 Des</span>
-                    </div>
+                    <div><strong>Standar</strong><br><span style="font-size: 12px; color: #777;">Estimasi tiba 24 - 26 Des</span></div>
                     <div style="font-weight: 700;">Rp 9.000</div>
                 </div>
             </section>
@@ -250,12 +228,10 @@
                 <div class="card-title">💳 Metode Pembayaran</div>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap;">
                     <button style="flex: 1; padding: 12px; border: 1px solid var(--primary); border-radius: 6px; background: #fffafa; cursor: pointer; text-align: left;">
-                        <span style="font-weight: 700; color: var(--primary);">Lazada Wallet</span><br>
-                        <span style="font-size: 11px; color: #777;">Saldo: Rp 150.000</span>
+                        <span style="font-weight: 700; color: var(--primary);">Lazada Wallet</span><br><span style="font-size: 11px; color: #777;">Saldo: Rp 1.000.000</span>
                     </button>
                     <button style="flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 6px; background: white; cursor: pointer; text-align: left;">
-                        <span style="font-weight: 700;">Transfer Bank</span><br>
-                        <span style="font-size: 11px; color: #777;">BCA, Mandiri, BNI</span>
+                        <span style="font-weight: 700;">Transfer Bank</span><br><span style="font-size: 11px; color: #777;">BCA, Mandiri, BNI</span>
                     </button>
                 </div>
             </section>
@@ -265,31 +241,73 @@
             <div class="card summary-card">
                 <div class="card-title">Ringkasan Pesanan</div>
                 <div class="summary-row">
-                    <span>Subtotal (1 Barang)</span>
-                    <span>Rp 35.000</span>
+                    <span id="labelSubtotal">Subtotal (0 Barang)</span>
+                    <span id="valSubtotal">Rp 0</span>
                 </div>
                 <div class="summary-row">
                     <span>Biaya Pengiriman</span>
                     <span>Rp 9.000</span>
                 </div>
-                <div class="summary-row" style="color: #4caf50;">
-                    <span>Promo Voucher</span>
-                    <span>-Rp 5.000</span>
-                </div>
                 
                 <div class="summary-row total-row">
                     <span>Total Bayar</span>
-                    <span>Rp 39.000</span>
+                    <span id="valTotal">Rp 9.000</span>
                 </div>
 
-                <button class="btn-pay" onclick="alert('Pesanan Berhasil!')">BUAT PESANAN</button>
-                <div style="font-size: 11px; color: #999; text-align: center; margin-top: 15px;">
-                    Dengan mengeklik "Buat Pesanan", Anda menyetujui <br> <a href="#" style="color: #999;">Syarat & Ketentuan</a> kami.
-                </div>
+                <button class="btn-pay" onclick="handlePayment()">BUAT PESANAN</button>
+                <div style="font-size: 11px; color: #999; text-align: center; margin-top: 15px;">Dengan mengeklik "Buat Pesanan", Anda menyetujui <br> <a href="#" style="color: #999;">Syarat & Ketentuan</a> kami.</div>
             </div>
         </aside>
-
     </div>
+
+    <script>
+        const cartItems = JSON.parse(localStorage.getItem('lazada_cart')) || [];
+        const container = document.getElementById('orderItemsContainer');
+        const labelSubtotal = document.getElementById('labelSubtotal');
+        const valSubtotal = document.getElementById('valSubtotal');
+        const valTotal = document.getElementById('valTotal');
+        const shippingCost = 9000;
+
+        let subtotal = 0;
+        let totalQty = 0;
+
+        if(cartItems.length === 0) {
+            container.innerHTML = '<div style="padding:20px; text-align:center; color:#999;">Tidak ada pesanan.</div>';
+        } else {
+            cartItems.forEach(item => {
+                subtotal += item.price * item.qty;
+                totalQty += item.qty;
+
+                container.innerHTML += `
+                <div class="order-item">
+                    <div class="item-img">${item.img}</div>
+                    <div class="item-info">
+                        <div style="font-size: 14px;">${item.name}</div>
+                        <div style="font-size: 12px; color: #999;">${item.variant}</div>
+                        <div class="item-price">Rp ${item.price.toLocaleString('id-ID')}</div>
+                    </div>
+                    <div style="font-size: 14px;">x${item.qty}</div>
+                </div>
+                `;
+            });
+        }
+
+        labelSubtotal.innerText = `Subtotal (${totalQty} Barang)`;
+        valSubtotal.innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+        valTotal.innerText = `Rp ${(subtotal + shippingCost).toLocaleString('id-ID')}`;
+
+        function handlePayment() {
+            if(cartItems.length === 0) {
+                alert("Tidak ada barang untuk dibayar!");
+                return;
+            }
+            if(confirm("Konfirmasi Pembayaran sebesar " + valTotal.innerText + "?")) {
+                alert("Pesanan Berhasil Dibuat! Terima kasih.");
+                localStorage.removeItem('lazada_cart');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
 
 </body>
 </html>

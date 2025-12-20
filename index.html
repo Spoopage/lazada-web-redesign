@@ -59,6 +59,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .navbar-search {
@@ -100,17 +101,33 @@
             font-size: 18px;
         }
 
+        /* ICON CART DENGAN BADGE */
         .navbar-cart {
             font-size: 24px;
             cursor: pointer;
             transition: transform 0.2s;
-            margin-right: 10px;
             color: var(--text-primary);
+            position: relative;
         }
         
         .navbar-cart:hover {
             transform: scale(1.1);
             color: var(--primary);
+        }
+
+        /* Badge Merah Kecil */
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: var(--primary);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 50%;
+            display: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .navbar-actions {
@@ -217,8 +234,7 @@
             opacity: 0.95;
             margin-bottom: 32px;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 32px;
         }
 
         .hero-cta {
@@ -404,10 +420,6 @@
             overflow: hidden;
             transition: all 0.3s ease;
             cursor: pointer;
-        }
-
-        /* Ensure product cards remain full-block links when wrapped in <a> */
-        .product-card {
             display: block;
             text-decoration: none;
             color: inherit;
@@ -511,56 +523,13 @@
 
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
-            .navbar-content {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .navbar-search {
-                max-width: 100%;
-                width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .promo-banner {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            }
-
-            .hero {
-                padding: 40px 20px;
-            }
-
-            .promo-banner {
-                padding: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 24px;
-            }
-
-            .categories-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .product-card {
-                border-radius: 6px;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                padding: 10px 20px;
-                font-size: 13px;
-            }
+            .navbar-content { flex-direction: column; gap: 12px; }
+            .navbar-search { max-width: 100%; width: 100%; }
+            .hero h1 { font-size: 32px; }
+            .promo-banner { grid-template-columns: 1fr; gap: 20px; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .hero { padding: 40px 20px; }
+            .promo-banner { padding: 30px; }
         }
     </style>
 </head>
@@ -568,13 +537,18 @@
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="navbar-content">
-            <div class="navbar-logo">L</div>
+            <div class="navbar-logo" onclick="window.location.href='index.html'">L</div>
             <div class="navbar-search">
                 <div class="search-bar">
                     <input type="text" placeholder="Cari produk favorit Anda...">
                     <button onclick="window.location.href='search.html'">🔍</button>
                 </div>
-                <div class="navbar-cart">🛒</div>
+                <!-- ICON CART DENGAN KLIK KE CART.HTML -->
+                <div class="navbar-cart" onclick="window.location.href='cart.html'">
+                    🛒
+                    <!-- BADGE NOTIFIKASI -->
+                    <div class="cart-badge" id="cartBadge">0</div>
+                </div>
             </div>
             <div class="navbar-actions">
                 <a href="#" class="navbar-link">Kategori</a>
@@ -593,7 +567,7 @@
             <h1>Belanja Hemat Hingga 90%</h1>
             <p>Jangan lewatkan penawaran spektakuler terbesar tahun ini. Ribuan produk pilihan dengan harga terbaik menanti Anda.</p>
             <div class="hero-cta">
-                <button class="btn-primary">Mulai Belanja</button>
+                <button class="btn-primary" onclick="window.location.href='search.html'">Mulai Belanja</button>
                 <button class="btn-secondary">Lihat Penawaran</button>
             </div>
         </div>
@@ -602,7 +576,7 @@
     <!-- CATEGORIES -->
     <section class="categories">
         <div class="categories-grid">
-            <div class="category-card">
+            <div class="category-card" onclick="window.location.href='search.html'">
                 <div class="category-icon">👗</div>
                 <div class="category-name">Fashion</div>
             </div>
@@ -644,7 +618,7 @@
                 <div class="promo-badge">Flash Sale</div>
                 <h2>Flash Sale<br>Setiap Hari</h2>
                 <p>Dapatkan produk pilihan dengan diskon fantastis. Stok terbatas, jangan sampai kehabisan!</p>
-                <button class="btn-primary">Lihat Flash Sale</button>
+                <button class="btn-primary" onclick="window.location.href='search.html'">Lihat Flash Sale</button>
             </div>
             <div class="promo-image">⚡</div>
         </div>
@@ -762,8 +736,24 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Lazada Indonesia. Semua hak dilindungi.</p>
+            <p>&copy; 2025 Lazada Indonesia.</p>
         </div>
     </footer>
+
+    <!-- SCRIPT UNTUK UPDATE BADGE CART -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItems = JSON.parse(localStorage.getItem('lazada_cart')) || [];
+            const cartBadge = document.getElementById('cartBadge');
+            const totalItemsCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
+            
+            if (totalItemsCount > 0) {
+                cartBadge.style.display = 'block';
+                cartBadge.innerText = totalItemsCount;
+            } else {
+                cartBadge.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

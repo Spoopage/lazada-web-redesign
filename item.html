@@ -6,14 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaos Polos Pria Cotton Combed 30s Premium | Lazada Indonesia</title>
     <style>
-        /* =========================================
-           1. CORE STYLES (SAMA PERSIS DENGAN SEBELUMNYA)
-           ========================================= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
             --primary: #f51a76;
@@ -24,21 +17,18 @@
             --text-secondary: #666666;
             --border: #e0e0e0;
             --gradient-primary: linear-gradient(135deg, #f51a76 0%, #cd252d 100%);
+            --sidebar-width: 360px;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: var(--text-primary);
             background: #f5f5f5;
-            transition: padding-right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-x: hidden;
-            /* Mencegah scroll horizontal saat animasi */
+            overflow-x: hidden; 
         }
 
-        /* State ketika troli terbuka: Memberi ruang 350px di kanan */
-        body.cart-open {
-            padding-right: 350px;
-        }
+        /* Saat troli terbuka, kunci scroll body */
+        body.cart-open { overflow: hidden; }
 
         /* ========== NAVBAR ========== */
         .navbar {
@@ -48,14 +38,7 @@
             background: var(--light-bg);
             border-bottom: 1px solid var(--border);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            /* Agar navbar ikut menyusut/bergeser secara halus */
-            transition: width 0.4s ease;
             width: 100%;
-        }
-
-        body.cart-open .navbar {
-            width: calc(100% - 350px);
         }
 
         .navbar-content {
@@ -99,20 +82,18 @@
         }
 
         .search-bar input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 14px;
-            background: transparent;
+            flex: 1; 
+            border: none; 
+            outline: none; 
+            font-size: 14px; 
+            background: transparent; 
         }
-
-        .search-bar button {
-            background: none;
-            border: none;
-            color: var(--primary);
-            cursor: pointer;
-            font-size: 18px;
-        }
+        .search-bar button { 
+            background: none; 
+            border: none; 
+            color: var(--primary); 
+            cursor: pointer; 
+            font-size: 18px; }
 
         .navbar-cart {
             font-size: 24px;
@@ -122,66 +103,79 @@
             position: relative;
         }
 
-        .navbar-cart:hover {
-            transform: scale(1.1);
-            color: var(--primary);
+        .navbar-cart:hover { 
+            transform: scale(1.1); 
+            color: var(--primary); 
         }
-
-        .navbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .btn-login {
-            padding: 8px 16px;
-            border: 2px solid var(--primary);
-            background: transparent;
-            color: var(--primary);
-            border-radius: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn-signup {
-            padding: 8px 16px;
-            background: var(--gradient-primary);
+        
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: var(--primary);
             color: white;
-            border: none;
-            border-radius: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 50%;
+            display: none; 
         }
 
-        /* =========================================
-           2. ITEM PAGE SPECIFIC STYLES
-           ========================================= */
+        .navbar-actions { 
+            display: flex; 
+            align-items: center; 
+            gap: 16px; 
+        }
+        .navbar-link { 
+            color: var(--text-primary); 
+            text-decoration: none; 
+            font-size: 14px; 
+            font-weight: 500; 
+            transition: color 0.3s ease; 
+        }
+        .navbar-link:hover { 
+            color: var(--primary); 
+        }
+
+        .btn-login { 
+            padding: 8px 16px; 
+            border: 2px solid var(--primary); 
+            background: transparent; 
+            color: var(--primary); 
+            border-radius: 20px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
+        .btn-signup { 
+            padding: 8px 16px; 
+            background: var(--gradient-primary); 
+            color: white; border: none; 
+            border-radius: 20px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            font-size: 14px; 
+        }
 
         .main-container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 0 20px;
-            transition: width 0.4s ease;
         }
 
-        .breadcrumb {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
+        .breadcrumb { 
+            font-size: 14px; 
+            color: var(--text-secondary); 
+            margin-bottom: 24px; 
+        }
+        .breadcrumb a { 
+            text-decoration: none; 
+            color: var(--text-secondary); 
+        }
+        .breadcrumb span { 
+            margin: 0 8px; 
         }
 
-        .breadcrumb a {
-            text-decoration: none;
-            color: var(--text-secondary);
-        }
-
-        .breadcrumb span {
-            margin: 0 8px;
-        }
-
-        /* PRODUCT CARD */
         .product-detail-card {
             background: white;
             border-radius: 12px;
@@ -192,97 +186,59 @@
             gap: 50px;
             align-items: start;
             margin-bottom: 24px;
-            /* Jarak ke kolom review */
         }
 
-        /* Gallery Styles */
-        .gallery-container {
-            position: sticky;
-            top: 90px;
+        /* Gallery */
+        .gallery-container { 
+            position: sticky; 
+            top: 90px; 
+        }
+        .main-image { 
+            width: 100%; 
+            aspect-ratio: 1/1; 
+            background: #f9f9f9; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            margin-bottom: 16px; 
+            border: 1px solid #eee; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 100px; 
+        }
+        .main-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        
+        .thumbnail-list { 
+            display: flex; 
+            gap: 12px; 
+            overflow-x: auto; 
+        }
+        .thumbnail { 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 6px; 
+            background: #f9f9f9; 
+            border: 2px solid transparent; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden; 
+        }
+        .thumbnail img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        .thumbnail.active { 
+            border-color: var(--primary); 
         }
 
-        .main-image {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: #f9f9f9;
-            border-radius: 8px;
-            display: block;
-            overflow: hidden;
-            margin-bottom: 16px;
-            border: 1px solid #eee;
-            position: relative;
-            cursor: zoom-in;
-        }
-
-        .main-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .thumbnail-list {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-        }
-
-        .thumbnail {
-            width: 70px;
-            height: 70px;
-            border-radius: 6px;
-            background: #f9f9f9;
-            border: 2px solid transparent;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .thumbnail.active {
-            border-color: var(--primary);
-        }
-
-        /* Zoom overlay that covers the product-detail-card when hovering main image */
-        .product-detail-card {
-            position: relative;
-        }
-
-        .zoom-overlay {
-            position: absolute;
-            inset: 0;
-            display: none;
-            z-index: 50;
-            pointer-events: none;
-        }
-
-        .zoom-overlay.active {
-            display: block;
-        }
-
-        .zoom-view {
-            position: absolute;
-            width: 60%;
-            height: 80%;
-            right: 6%;
-            top: 8%;
-            border-radius: 8px;
-            background-repeat: no-repeat;
-            background-size: 200%;
-            background-position: center;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-            transform: translateZ(0);
-        }
-
-        /* Right Info Styles */
+        /* Info */
         .product-title {
             font-size: 24px;
             font-weight: 700;
@@ -339,7 +295,7 @@
             margin-left: 8px;
         }
 
-        /* Selection */
+        /* Variants */
         .variant-section {
             margin-bottom: 24px;
         }
@@ -426,23 +382,11 @@
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(245, 26, 118, 0.3);
-            transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.12s ease;
+            transition: transform 0.2s;
         }
 
         .btn-buy-now:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(245, 26, 118, 0.25);
-        }
-
-        .btn-buy-now:active {
-            transform: translateY(0) scale(0.98);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
-            opacity: 0.98;
-        }
-
-        .btn-buy-now:focus {
-            outline: 3px solid rgba(245, 26, 118, 0.12);
-            outline-offset: 2px;
+            transform: translateY(-2px);
         }
 
         .btn-add-cart {
@@ -455,25 +399,14 @@
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+            transition: background 0.2s;
         }
 
         .btn-add-cart:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(73, 101, 230, 0.12);
-            background: linear-gradient(180deg, #fff, #fbfbff);
+            background: #ffeef2;
         }
 
-        .btn-add-cart:active {
-            transform: translateY(0) scale(0.99);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .btn-add-cart:focus {
-            outline: 3px solid rgba(73, 101, 230, 0.12);
-            outline-offset: 2px;
-        }
-
+        /* Delivery */
         .delivery-info {
             background: #fafafa;
             border-radius: 8px;
@@ -509,9 +442,7 @@
             line-height: 1.5;
         }
 
-        /* =========================================
-           3. REVIEW SECTION STYLES (BARU)
-           ========================================= */
+        /* Reviews */
         .review-section {
             background: white;
             border-radius: 12px;
@@ -618,10 +549,6 @@
             padding-bottom: 24px;
         }
 
-        .review-item:last-child {
-            border-bottom: none;
-        }
-
         .review-header {
             display: flex;
             justify-content: space-between;
@@ -673,8 +600,175 @@
             font-size: 20px;
             cursor: pointer;
         }
+        
+        /* Backdrop gelap */
+        .cart-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999; 
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
 
-        /* FOOTER (Sama) */
+        body.cart-open .cart-backdrop {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            z-index: 2000;
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.cart-open .cart-sidebar {
+            transform: translateX(0);
+        }
+
+        .cart-sidebar-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title-sm { font-size: 16px; font-weight: 700; }
+        
+        .close-cart-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 0 5px;
+        }
+        .close-cart-btn:hover { color: var(--primary); }
+
+        .cart-sidebar-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 12px;
+            padding: 16px 24px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .cart-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            background: #eee;
+            object-fit: cover;
+            border: 1px solid #eee;
+            display: flex; align-items: center; justify-content: center; font-size: 30px;
+        }
+
+        .cart-item-info { 
+            flex: 1; 
+        }
+        .cart-item-name { 
+            font-size: 13px; 
+            font-weight: 500; 
+            margin-bottom: 4px; 
+            line-height: 1.4; 
+            display: -webkit-box; 
+            -webkit-line-clamp: 2; 
+            -webkit-box-orient: vertical; 
+            overflow: hidden; }
+        .cart-item-price { 
+            color: var(--primary); 
+            font-weight: 700; 
+            font-size: 14px; 
+            margin-bottom: 8px; }
+        
+        .cart-qty-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            width: fit-content;
+        }
+
+        .btn-cart-qty { 
+            width: 24px; 
+            height: 24px; 
+            border: none; 
+            background: #f9f9f9; 
+            cursor: pointer; 
+        }
+        .input-cart-qty { 
+            width: 32px; 
+            height: 24px; 
+            text-align: center; 
+            border: none; 
+            font-size: 12px; 
+            background: white; 
+        }
+
+        .cart-sidebar-footer {
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            background: white;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .cart-total-price { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: var(--primary); 
+        }
+
+        .btn-checkout-sidebar {
+            width: 100%;
+            padding: 12px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .btn-checkout-sidebar:hover { 
+            opacity: 0.9; 
+        }
+
+        .view-cart-link {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
         .footer {
             background: var(--dark-bg);
             color: white;
@@ -726,218 +820,7 @@
             color: rgba(255, 255, 255, 0.5);
         }
 
-        @media (max-width: 900px) {
-            .product-detail-card {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .gallery-container {
-                position: static;
-            }
-
-            .review-summary {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-
-            .rating-bars {
-                border-left: none;
-                padding-left: 0;
-                width: 100%;
-            }
-
-            .search-bar {
-                display: none;
-            }
-
-            body.cart-open {
-                padding-right: 0;
-            }
-
-            .cart-sidebar {
-                width: 100%;
-            }
-
-            body.cart-open .navbar {
-                width: 100%;
-            }
-
-            body.cart-open .cart-sidebar {
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================================
-        PERSISTENT CART & MODAL STYLES
-        ========================================= */
-        .cart-sidebar {
-            position: fixed;
-            right: 0;
-            top: 0;
-            width: var(--sidebar-width);
-            height: 100vh;
-            background: white;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-            z-index: 2000;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid var(--border);
-        }
-
-        body.cart-open .cart-sidebar {
-            transform: translateX(0);
-        }
-
-        .cart-sidebar-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--border);
-            flex-shrink: 0;
-        }
-
-        .close-cart-btn {
-            position: absolute;
-            top: 15px;
-            left: -40px;
-            width: 40px;
-            height: 40px;
-            background: white;
-            border: 1px solid var(--border);
-            border-right: none;
-            border-radius: 8px 0 0 8px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .cart-total-price {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .btn-checkout-sidebar {
-            width: 100%;
-            padding: 14px;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-checkout-sidebar:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
-        .view-cart-text {
-            display: block;
-            text-align: center;
-            color: var(--secondary);
-            font-size: 14px;
-            margin-top: 10px;
-            text-decoration: none;
-        }
-
-        .cart-sidebar-list {
-            flex: 1;
-            overflow-y: auto;
-            padding: 10px 24px;
-        }
-
-        .cart-item {
-            display: flex;
-            gap: 12px;
-            padding: 16px 0;
-            border-bottom: 1px solid #f5f5f5;
-            align-items: flex-start;
-        }
-
-        .cart-checkbox {
-            width: 18px;
-            height: 18px;
-            accent-color: var(--primary);
-            cursor: pointer;
-            margin-top: 4px;
-        }
-
-        .cart-item-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
-            object-fit: cover;
-            border: 1px solid #eee;
-        }
-
-        .cart-item-info {
-            flex: 1;
-        }
-
-        .cart-item-name {
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 4px;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .cart-item-price {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .cart-qty-control {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            width: fit-content;
-            overflow: hidden;
-        }
-
-        .btn-cart-qty {
-            width: 28px;
-            height: 28px;
-            border: none;
-            background: #f8f8f8;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-cart-qty:hover {
-            background: #eee;
-        }
-
-        .input-cart-qty {
-            width: 45px;
-            height: 28px;
-            text-align: center;
-            border: none;
-            border-left: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-            font-size: 13px;
-        }
-
-        /* =========================================
-           4. MODAL & OVERLAY
-           ========================================= */
+        /* Modal Hapus */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -954,58 +837,57 @@
             border-radius: 12px;
             width: 320px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
+        .modal-actions { 
+            display: flex; 
+            gap: 10px; 
+            margin-top: 20px; 
+        }
+        .btn-modal { 
+            flex: 1; 
+            padding: 10px; 
+            border-radius: 6px; 
+            border: none; 
+            cursor: pointer; 
+            font-weight: 600; 
+        }
+        .btn-confirm { 
+            background: var(--primary); 
+            color: white; 
+        }
+        .btn-cancel { 
+            background: #eee; 
+            color: var(--text-secondary); 
         }
 
-        .btn-modal {
-            flex: 1;
-            padding: 10px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        .btn-confirm {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-cancel {
-            background: #eee;
-            color: var(--text-secondary);
-        }
-
-        /* Menyesuaikan container utama agar tidak tertutup troli */
-        .main-container {
-            margin-right: 320px;
-            /* Memberi ruang untuk sidebar di kanan */
+        @media (max-width: 900px) {
+            .product-detail-card { grid-template-columns: 1fr; gap: 30px; }
+            .review-summary { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .rating-bars { border-left: none; padding-left: 0; width: 100%; }
+            .search-bar { display: none; }
+            .cart-sidebar { width: 100%; max-width: 360px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="navbar-content">
-            <!-- Logo "L" sesuai Index -->
             <div class="navbar-logo" onclick="window.location.href='index.html'">L</div>
             <div class="navbar-search">
                 <div class="search-bar">
-                    <!-- Value default "Baju pria" -->
-                    <input type="text" value="Pakaian pria">
+                    <input type="text" placeholder="Pakaian pria">
                     <button onclick="window.location.href='search.html'">🔍</button>
                 </div>
-                <div class="navbar-cart" onclick="toggleCartManual()">🛒</div>
+                <!-- Ikon Troli -->
+                <div class="navbar-cart" onclick="openCart()">
+                    🛒
+                    <div class="cart-badge" id="cartBadge">0</div>
+                </div>
             </div>
-
             <div class="navbar-actions">
                 <a href="#" class="navbar-link">Kategori</a>
                 <a href="#" class="navbar-link">Promo</a>
@@ -1016,40 +898,31 @@
         </div>
     </nav>
 
-    <div class="cart-sidebar">
+    <!-- BACKDROP & SIDEBAR CART -->
+    <div class="cart-backdrop" onclick="closeCart()"></div>
+    
+    <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-sidebar-header">
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                <button id="closeCart"
-                    style="background:none; border:none; font-size: 24px; cursor:pointer; color: var(--text-secondary);">&times;</button>
-            </div>
-            <div class="header-top">
-                <span class="total-label">Total</span>
+            <div class="cart-title-sm">Keranjang Belanja</div>
+            <button class="close-cart-btn" onclick="closeCart()">&times;</button>
+        </div>
+
+        <div class="cart-sidebar-list" id="cartList">
+            <!-- Item akan dirender di sini via JS -->
+        </div>
+
+        <div class="cart-sidebar-footer">
+            <div class="cart-total-row">
+                <span>Total</span>
                 <span class="cart-total-price" id="cartTotal">Rp 0</span>
             </div>
+            <button class="btn-checkout-sidebar" id="checkoutBtn" onclick="window.location.href='checkout.html'">Checkout</button>
+            <a href="cart.html" class="view-cart-link">Lihat Halaman Troli</a>
         </div>
-
-        <button class="btn-checkout-sidebar">
-            Checkout (1 item)
-        </button>
-
-        <a href="cart.html" class="view-cart-text">Lihat troli</a>
-
-        <!-- <div class="cart-sidebar-list">
-        <div class="cart-sidebar-item">
-            <img src="https://via.placeholder.com/60x60.png?text=Product" alt="Product Image">
-            <div class="item-info">
-                <p class="item-name">FOCALLURE Oil Control Loose Powder...</p>
-                <p class="item-price">Rp32.500</p>
-                <div class="item-qty">Kuantitas: 1</div>
-            </div>
-        </div>
-    </div> -->
     </div>
 
     <!-- MAIN CONTENT -->
     <div class="main-container">
-
-        <!-- Breadcrumb -->
         <div class="breadcrumb">
             <a href="index.html">Beranda</a> <span>></span>
             <a href="search.html">Pakaian Pria</a> <span>></span>
@@ -1057,59 +930,30 @@
             <span style="color: var(--text-primary); font-weight: 500;">Kaos Polos Premium</span>
         </div>
 
-        <!-- PRODUCT DETAILS -->
         <div class="product-detail-card">
-
-            <!-- LEFT: IMAGES -->
             <div class="gallery-container">
-                <div class="main-image" id="mainImageContainer" title="Klik untuk memperbesar">
-                    <img id="mainImage" src="https://via.placeholder.com/800x800.png?text=Kaos"
-                        alt="Gambar produk utama">
+                <div class="main-image">👕</div>
+                <div class="thumbnail-list">
+                    <div class="thumbnail active">👕</div>
+                    <div class="thumbnail">👚</div>
+                    <div class="thumbnail">👔</div>
+                    <div class="thumbnail">🧥</div>
                 </div>
-                <div class="thumbnail-list" id="thumbnailList">
-                    <button class="thumbnail active" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos">
-                        <img src="https://via.placeholder.com/120x120.png?text=Kaos" alt="Thumb Kaos">
-                    </button>
-                    <button class="thumbnail" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos+Putih">
-                        <img src="https://via.placeholder.com/120x120.png?text=Putih" alt="Thumb Putih">
-                    </button>
-                    <button class="thumbnail" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos+Navy">
-                        <img src="https://via.placeholder.com/120x120.png?text=Navy" alt="Thumb Navy">
-                    </button>
-                    <button class="thumbnail" data-src="https://via.placeholder.com/1200x1200.png?text=Kaos+Outer">
-                        <img src="https://via.placeholder.com/120x120.png?text=Outer" alt="Thumb Outer">
-                    </button>
-                </div>
-            </div>
-            <!-- Zoom overlay; shown on hover and covers product-info temporarily -->
-            <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true">
-                <div class="zoom-view" id="zoomView"></div>
             </div>
 
-            <!-- RIGHT: INFO -->
             <div class="product-info">
-                <h1 class="product-title">Kaos Polos Pria Cotton Combed 30s Premium - Hitam, Adem & Menyerap Keringat
-                </h1>
-
+                <h1 class="product-title">Kaos Polos Pria Cotton Combed 30s Premium - Hitam, Adem & Menyerap Keringat</h1>
                 <div class="rating-sold">
-                    <div class="rating-stars">⭐⭐⭐⭐⭐ 4.9</div>
-                    <div class="divider"></div>
-                    <div>2.4k Penilaian</div>
-                    <div class="divider"></div>
-                    <div>10rb+ Terjual</div>
+                    <div class="rating-stars">⭐⭐⭐⭐⭐ 4.9</div><div class="divider"></div><div>2.4k Penilaian</div><div class="divider"></div><div>10rb+ Terjual</div>
                 </div>
-
                 <div class="price-area">
-                    <div style="display: flex; align-items: center;">
-                        <span class="price-main">Rp 35.000</span>
-                        <span class="discount-badge">-65%</span>
-                    </div>
+                    <div style="display: flex; align-items: center;"><span class="price-main">Rp 35.000</span><span class="discount-badge">-65%</span></div>
                     <div class="price-origin">Rp 100.000</div>
                 </div>
 
                 <div class="variant-section">
-                    <div class="variant-label">Warna: Hitam</div>
-                    <div class="variant-options">
+                    <div class="variant-label" id="labelWarna">Warna: Hitam</div>
+                    <div class="variant-options" id="optWarna">
                         <button class="btn-variant selected">Hitam</button>
                         <button class="btn-variant">Putih</button>
                         <button class="btn-variant">Navy</button>
@@ -1118,8 +962,8 @@
                 </div>
 
                 <div class="variant-section">
-                    <div class="variant-label">Ukuran: L</div>
-                    <div class="variant-options">
+                    <div class="variant-label" id="labelUkuran">Ukuran: L</div>
+                    <div class="variant-options" id="optUkuran">
                         <button class="btn-variant">S</button>
                         <button class="btn-variant">M</button>
                         <button class="btn-variant selected">L</button>
@@ -1130,146 +974,63 @@
                 <div class="variant-section">
                     <div class="variant-label">Kuantitas</div>
                     <div class="quantity-control">
-                        <button class="btn-qty">-</button>
-                        <input type="text" class="input-qty" value="1">
-                        <button class="btn-qty">+</button>
+                        <button class="btn-qty" onclick="adjustMainQty(-1)">-</button>
+                        <input type="text" class="input-qty" id="mainQty" value="1" readonly>
+                        <button class="btn-qty" onclick="adjustMainQty(1)">+</button>
                     </div>
                 </div>
 
                 <div class="action-buttons">
-                    <button class="btn-buy-now">Beli Sekarang</button>
-                    <button class="btn-add-cart" id="addToCartTrigger">Tambah ke Troli</button>
+                    <button class="btn-buy-now" onclick="addToCart(true)">Beli Sekarang</button>
+                    <button class="btn-add-cart" onclick="addToCart(false)">Tambah ke Troli</button>
                 </div>
 
                 <div class="delivery-info">
                     <div class="delivery-header">🚚 Pilihan Pengiriman</div>
-                    <div class="delivery-item">
-                        <div class="delivery-icon">📍</div>
-                        <div class="delivery-text">
-                            <strong>Dikirim ke Jakarta Pusat</strong><br>
-                            <span style="color: #666;">Ongkir mulai Rp 9.000</span>
-                        </div>
-                        <div style="color: var(--primary); cursor: pointer;">Ubah</div>
-                    </div>
-                    <div class="delivery-item">
-                        <div class="delivery-icon">⚡</div>
-                        <div class="delivery-text">
-                            <strong>Standar (2-4 Hari)</strong><br>
-                            <span style="color: #666;">Estimasi tiba 12 - 14 Jan</span>
-                        </div>
-                    </div>
+                    <div class="delivery-item"><div class="delivery-icon">📍</div><div class="delivery-text"><strong>Dikirim ke Jakarta Pusat</strong><br><span style="color: #666;">Ongkir mulai Rp 9.000</span></div><div style="color: var(--primary); cursor: pointer;">Ubah</div></div>
                 </div>
             </div>
         </div>
 
-        <!-- NEW: REVIEW SECTION (Sesuai Request) -->
         <div class="review-section">
             <h3 class="section-title">Penilaian & Ulasan Produk</h3>
-
-            <!-- Summary Rating -->
             <div class="review-summary">
-                <div class="rating-big-box">
-                    <div class="rating-score">4.9<span style="font-size: 24px; color: #999;">/5</span></div>
-                    <div class="rating-stars" style="font-size: 20px; margin-top: 4px;">⭐⭐⭐⭐⭐</div>
-                    <div class="rating-sub">2.4k Ulasan</div>
-                </div>
-
+                <div class="rating-big-box"><div class="rating-score">4.9<span style="font-size: 24px; color: #999;">/5</span></div><div class="rating-stars" style="font-size: 20px; margin-top: 4px;">⭐⭐⭐⭐⭐</div><div class="rating-sub">2.4k Ulasan</div></div>
                 <div class="rating-bars">
-                    <div class="bar-row">
-                        <span style="width: 60px;">Bintang 5</span>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 90%;"></div>
-                        </div>
-                        <span>2.1k</span>
-                    </div>
-                    <div class="bar-row">
-                        <span style="width: 60px;">Bintang 4</span>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 8%;"></div>
-                        </div>
-                        <span>200</span>
-                    </div>
-                    <div class="bar-row">
-                        <span style="width: 60px;">Bintang 3</span>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 1%;"></div>
-                        </div>
-                        <span>50</span>
-                    </div>
-                    <div class="bar-row">
-                        <span style="width: 60px;">Bintang 2</span>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 0.5%;"></div>
-                        </div>
-                        <span>10</span>
-                    </div>
-                    <div class="bar-row">
-                        <span style="width: 60px;">Bintang 1</span>
-                        <div class="bar-container">
-                            <div class="bar-fill" style="width: 0.5%;"></div>
-                        </div>
-                        <span>5</span>
-                    </div>
+                    <div class="bar-row"><span style="width: 60px;">Bintang 5</span><div class="bar-container"><div class="bar-fill" style="width: 90%;"></div></div><span>2.1k</span></div>
+                    <div class="bar-row"><span style="width: 60px;">Bintang 4</span><div class="bar-container"><div class="bar-fill" style="width: 8%;"></div></div><span>200</span></div>
                 </div>
             </div>
-
-            <!-- Filter Buttons -->
-            <div class="review-filters">
-                <button class="btn-filter active">Semua</button>
-                <button class="btn-filter">Bintang 5 (2.1k)</button>
-                <button class="btn-filter">Bintang 4 (200)</button>
-                <button class="btn-filter">Dengan Media (850)</button>
-            </div>
-
-            <!-- Review List -->
+            
             <div class="review-list">
-
-                <!-- Review 1 -->
                 <div class="review-item">
-                    <div class="review-header">
-                        <span class="reviewer-name">budi_santoso88</span>
-                        <span class="review-date">2 Hari lalu</span>
-                    </div>
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <div class="review-variant">Varian: Hitam, Ukuran: L</div>
-                    <p class="review-text">Barangnya mantap gan! Bahannya adem banget dipakai, menyerap keringat.
-                        Jahitan rapi, pengiriman juga cepet banget. Recommended seller pokoknya!</p>
-                    <div class="review-images">
-                        <div class="review-img">👕</div>
-                        <div class="review-img">📦</div>
-                    </div>
+                    <div class="review-header"><span class="reviewer-name">budi_santoso88</span><span class="review-date">2 Hari lalu</span></div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-variant">Varian: Hitam, Ukuran: L</div>
+                    <p class="review-text">Barangnya mantap gan! Bahannya adem banget dipakai.</p>
                 </div>
+            </div>
 
-                <!-- Review 2 -->
+            <div class="review-list">
                 <div class="review-item">
-                    <div class="review-header">
-                        <span class="reviewer-name">siti.aminah</span>
-                        <span class="review-date">1 Minggu lalu</span>
-                    </div>
-                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
-                    <div class="review-variant">Varian: Navy, Ukuran: M</div>
+                    <div class="review-header"><span class="reviewer-name">siti.aminah</span><span class="review-date">1 Minggu lalu</span></div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-variant">Varian: Navy, Ukuran: M</div>
                     <p class="review-text">Suka banget sama warnanya, sesuai gambar. Ukurannya juga pas di badan suami
-                        saya. Bakal langganan nih kalo ada promo lagi. Makasih Lazada!</p>
+                        saya. Bakal langganan nih kalo ada promo lagi.</p>
                 </div>
+            </div>
 
-                <!-- Review 3 -->
+            <div class="review-list">
                 <div class="review-item">
-                    <div class="review-header">
-                        <span class="reviewer-name">ahmad_dhani</span>
-                        <span class="review-date">2 Minggu lalu</span>
-                    </div>
-                    <div class="review-stars">⭐⭐⭐⭐</div>
-                    <div class="review-variant">Varian: Putih, Ukuran: XL</div>
+                    <div class="review-header"><span class="reviewer-name">ahmad_dhani</span><span class="review-date">2 Minggu lalu</span></div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div><div class="review-variant">Varian: Putih, Ukuran: XL</div>
                     <p class="review-text">Bahan bagus, cuma agak tipis dikit buat yang warna putih, jadi agak nerawang.
                         Tapi worth it lah dengan harga segini. Pengiriman aman.</p>
                     <div class="review-images">
                         <div class="review-img">👕</div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 
     <!-- FOOTER -->
@@ -1313,30 +1074,15 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Lazada Indonesia. Semua hak dilindungi.</p>
+            <p>&copy; 2025 Lazada Indonesia.</p>
         </div>
     </footer>
 
-
-    <div class="cart-sidebar" id="cartSidebar">
-        <button class="close-cart-btn" onclick="closeCart()">&times;</button>
-        <div class="cart-sidebar-header">
-            <div class="header-top">
-                <span style="color:var(--text-secondary)">Total</span>
-                <span class="cart-total-price" id="cartTotal">Rp 0</span>
-            </div>
-            <button class="btn-checkout-sidebar" id="checkoutBtn">Checkout (0 item)</button>
-            <a href="cart.html" class="view-cart-text">Lihat troli</a>
-        </div>
-        <div class="cart-sidebar-list" id="cartList">
-        </div>
-    </div>
-
+    <!-- MODAL CONFIRM DELETE -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal-content">
             <h3 style="margin-bottom:10px">Hapus Barang?</h3>
-            <p style="font-size:14px; color:var(--text-secondary)">Apakah Anda yakin ingin menghapus produk ini dari
-                troli?</p>
+            <p style="font-size:14px; color:var(--text-secondary)">Apakah Anda yakin ingin menghapus produk ini?</p>
             <div class="modal-actions">
                 <button class="btn-modal btn-cancel" onclick="hideModal()">Batal</button>
                 <button class="btn-modal btn-confirm" id="confirmDeleteBtn">Hapus</button>
@@ -1344,260 +1090,167 @@
         </div>
     </div>
 
-</body>
-<script>
-    // Make variant buttons behave like exclusive options and update labels
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.variant-section').forEach(function (section) {
-            var options = section.querySelectorAll('.btn-variant');
-            var labelEl = section.querySelector('.variant-label');
-            // Determine the base label (text before colon) or fallback
-            var baseLabel = 'Pilihan';
-            if (labelEl) {
-                var parts = labelEl.textContent.split(':');
-                baseLabel = parts[0].trim();
+    <!-- SCRIPT LOGIC -->
+    <script>
+        // STATE DATA (LocalStorage)
+        let cartItems = JSON.parse(localStorage.getItem('lazada_cart')) || [];
+        let pendingDeleteIndex = null;
+        let selectedColor = "Hitam";
+        let selectedSize = "L";
+
+        // DOM ELEMENTS
+        const body = document.body;
+        const cartList = document.getElementById('cartList');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartBadge = document.getElementById('cartBadge');
+        const deleteModal = document.getElementById('deleteModal');
+
+        // --- INIT ---
+        renderCart(); // Load cart on startup
+
+        // --- VARIANT LOGIC ---
+        document.querySelectorAll('#optWarna .btn-variant').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#optWarna .btn-variant').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedColor = this.innerText;
+                document.getElementById('labelWarna').innerText = "Warna: " + selectedColor;
+            });
+        });
+
+        document.querySelectorAll('#optUkuran .btn-variant').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('#optUkuran .btn-variant').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedSize = this.innerText;
+                document.getElementById('labelUkuran').innerText = "Ukuran: " + selectedSize;
+            });
+        });
+
+        // --- MAIN QTY CONTROL ---
+        function adjustMainQty(delta) {
+            const qtyInput = document.getElementById('mainQty');
+            let val = parseInt(qtyInput.value) || 1;
+            val += delta;
+            if(val < 1) val = 1;
+            qtyInput.value = val;
+        }
+
+        // --- CART SIDEBAR UI ---
+        function openCart() {
+            body.classList.add('cart-open');
+        }
+
+        function closeCart() {
+            body.classList.remove('cart-open');
+        }
+
+        // --- CORE CART FUNCTIONS ---
+        function addToCart(isBuyNow) {
+            const qty = parseInt(document.getElementById('mainQty').value) || 1;
+            const productName = "Kaos Polos Pria Cotton Combed 30s";
+            const variantName = `Warna: ${selectedColor}, Ukuran: ${selectedSize}`;
+            const price = 35000;
+
+            const existingItem = cartItems.find(item => item.variant === variantName);
+
+            if(existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cartItems.push({
+                    name: productName,
+                    variant: variantName,
+                    price: price,
+                    qty: qty,
+                    img: "👕" 
+                });
             }
 
-            options.forEach(function (btn) {
-                // Ensure accessible state
-                btn.setAttribute('role', 'button');
-                btn.setAttribute('tabindex', '0');
+            saveCart();
+            renderCart();
 
-                // Click handler
-                btn.addEventListener('click', function () {
-                    options.forEach(function (b) { b.classList.remove('selected'); b.setAttribute('aria-pressed', 'false'); });
-                    btn.classList.add('selected');
-                    btn.setAttribute('aria-pressed', 'true');
-                    // Update label text
-                    if (labelEl) {
-                        var value = btn.textContent.trim();
-                        labelEl.textContent = baseLabel + ': ' + value;
-                    }
-                });
-
-                // Keyboard support (Enter / Space)
-                btn.addEventListener('keydown', function (e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        btn.click();
-                    }
-                });
-            });
-        });
-
-        // Simple quantity control behavior (optional enhancement)
-        var qtyInputs = document.querySelectorAll('.quantity-control');
-        qtyInputs.forEach(function (container) {
-            var dec = container.querySelectorAll('.btn-qty')[0];
-            var inc = container.querySelectorAll('.btn-qty')[1];
-            var input = container.querySelector('.input-qty');
-            if (!dec || !inc || !input) return;
-            dec.addEventListener('click', function () {
-                var v = parseInt(input.value) || 1; if (v > 1) input.value = v - 1;
-            });
-            inc.addEventListener('click', function () {
-                var v = parseInt(input.value) || 1; input.value = v + 1;
-            });
-        });
-    });
-
-    // DATA STATE
-    let itemsInCart = [];
-    let pendingDeleteIndex = null;
-
-    // SELECTORS
-    const body = document.body;
-    const cartSidebar = document.getElementById('cartSidebar');
-    const cartList = document.getElementById('cartList');
-    const cartTotal = document.getElementById('cartTotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    const deleteModal = document.getElementById('deleteModal');
-
-    // FUNCTIONS
-    function openCart() {
-        body.classList.add('cart-open');
-    }
-
-    function closeCart() {
-        body.classList.remove('cart-open');
-    }
-
-    function toggleCartManual() {
-        // Cek apakah ada barang di troli sebelum memunculkan
-        if (itemsInCart.length > 0) {
-            document.body.classList.toggle('cart-open');
-        } else {
-            alert("Troli Anda masih kosong!");
-        }
-    }
-
-    // RENDER LOGIC
-    function renderCart() {
-        // Auto-hide if empty
-        if (itemsInCart.length === 0) {
-            cartList.innerHTML = `<div style="text-align:center; padding-top:50px; color:#999">Troli kosong</div>`;
-            cartTotal.innerText = "Rp 0";
-            checkoutBtn.innerText = "Checkout (0 item)";
-            setTimeout(closeCart, 300);
-            return;
+            if(isBuyNow) {
+                window.location.href = 'checkout.html';
+            } else {
+                openCart(); // Buka sidebar setelah tambah
+            }
         }
 
-        cartList.innerHTML = '';
-        let totalAll = 0;
-        let checkedCount = 0;
-        let totalQty = 0;
+        function saveCart() {
+            localStorage.setItem('lazada_cart', JSON.stringify(cartItems));
+        }
 
-        itemsInCart.forEach((item, index) => {
-            const price = Number(item.price) || 0;
-            const qty = Number(item.qty) || 0;
-            totalAll += price * qty;
-            totalQty += qty;
-            if (item.checked) checkedCount += qty;
+        function renderCart() {
+            // Update Badge
+            const totalItemsCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
+            if(totalItemsCount > 0) {
+                cartBadge.style.display = 'block';
+                cartBadge.innerText = totalItemsCount;
+            } else {
+                cartBadge.style.display = 'none';
+            }
 
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'cart-item';
-            itemDiv.innerHTML = `
-                    <input type="checkbox" class="cart-checkbox" ${item.checked ? 'checked' : ''} onchange="toggleCheck(${index})">
-                    <img src="${item.img}" class="cart-item-img">
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')}</div>
-                        <div class="cart-qty-control">
-                            <button class="btn-cart-qty" onclick="updateQty(${index}, -1)">-</button>
-                            <input type="number" class="input-cart-qty" value="${item.qty}" onchange="manualQty(${index}, this.value)">
-                            <button class="btn-cart-qty" onclick="updateQty(${index}, 1)">+</button>
+            // Render List
+            cartList.innerHTML = '';
+            let totalPrice = 0;
+
+            if(cartItems.length === 0) {
+                cartList.innerHTML = `<div style="text-align:center; padding:40px; color:#999;">Troli kosong</div>`;
+            } else {
+                cartItems.forEach((item, index) => {
+                    totalPrice += item.price * item.qty;
+                    
+                    const itemHTML = `
+                        <div class="cart-item">
+                            <div class="cart-item-img">${item.img}</div>
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div style="font-size:12px; color:#666; margin-bottom:4px;">${item.variant}</div>
+                                <div class="cart-item-price">Rp ${item.price.toLocaleString('id-ID')}</div>
+                                <div class="cart-qty-control">
+                                    <button class="btn-cart-qty" onclick="updateItemQty(${index}, -1)">-</button>
+                                    <input type="text" class="input-cart-qty" value="${item.qty}" readonly>
+                                    <button class="btn-cart-qty" onclick="updateItemQty(${index}, 1)">+</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                `;
-            cartList.appendChild(itemDiv);
-        });
+                    `;
+                    cartList.innerHTML += itemHTML;
+                });
+            }
 
-        // Display total for ALL items in cart (typical expectation)
-        cartTotal.innerText = `Rp ${totalAll.toLocaleString('id-ID')}`;
-        // If user has selected (checked) items, keep checkout count for selected items, otherwise show total qty
-        const checkoutCount = checkedCount > 0 ? checkedCount : totalQty;
-        checkoutBtn.innerText = `Checkout (${checkoutCount} item)`;
-    }
-
-    // INTERACTION LOGIC
-    window.toggleCheck = (index) => {
-        itemsInCart[index].checked = !itemsInCart[index].checked;
-        renderCart();
-    };
-
-    window.updateQty = (index, delta) => {
-        const item = itemsInCart[index];
-        if (item.qty === 1 && delta === -1) {
-            showModal(index);
-        } else {
-            item.qty += delta;
-            renderCart();
+            cartTotal.innerText = "Rp " + totalPrice.toLocaleString('id-ID');
+            checkoutBtn.innerText = `Checkout (${totalItemsCount})`;
         }
-    };
 
-    window.manualQty = (index, val) => {
-        let num = parseInt(val);
-        if (isNaN(num) || num < 1) {
-            showModal(index);
-        } else {
-            itemsInCart[index].qty = num;
-            renderCart();
+        function updateItemQty(index, delta) {
+            if(cartItems[index].qty === 1 && delta === -1) {
+                pendingDeleteIndex = index;
+                deleteModal.style.display = 'flex';
+            } else {
+                cartItems[index].qty += delta;
+                saveCart();
+                renderCart();
+            }
         }
-    };
 
-    // MODAL LOGIC
-    function showModal(index) {
-        pendingDeleteIndex = index;
-        deleteModal.style.display = 'flex';
-    }
+        // --- MODAL LOGIC ---
+        function hideModal() {
+            deleteModal.style.display = 'none';
+            pendingDeleteIndex = null;
+        }
 
-    function hideModal() {
-        deleteModal.style.display = 'none';
-        renderCart(); // Reset input view if user cancels
-    }
-
-    document.getElementById('confirmDeleteBtn').onclick = () => {
-        itemsInCart.splice(pendingDeleteIndex, 1);
-        hideModal();
-        renderCart();
-    };
-
-    // ADD TO CART TRIGGER
-    document.getElementById('addToCartTrigger').onclick = () => {
-        const product = {
-            id: 101,
-            name: "Kaos Polos Pria Cotton Combed 30s Premium",
-            price: 35000,
-            qty: 1,
-            checked: true,
-            img: "https://via.placeholder.com/100.png?text=Kaos"
+        document.getElementById('confirmDeleteBtn').onclick = function() {
+            if(pendingDeleteIndex !== null) {
+                cartItems.splice(pendingDeleteIndex, 1);
+                saveCart();
+                renderCart();
+                hideModal();
+            }
         };
 
-        // Check if already exists
-        const existing = itemsInCart.find(i => i.id === product.id);
-        if (existing) {
-            existing.qty++;
-        } else {
-            itemsInCart.push(product);
-        }
+    </script>
 
-        renderCart();
-        openCart();
-    };
-
-    // Connect checkout actions to checkout page
-    // When user clicks the sidebar checkout button, go to checkout.html
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', function () {
-            window.location.href = 'checkout.html';
-        });
-    }
-
-    // Beli Sekarang: add current selection and go to cart.html
-    document.querySelectorAll('.btn-buy-now').forEach(function(btn){
-        btn.addEventListener('click', function(){
-            // gather quantity and selected variants
-            var qtyInput = document.querySelector('.quantity-control .input-qty');
-            var qty = qtyInput ? (parseInt(qtyInput.value) || 1) : 1;
-
-            var variantSections = document.querySelectorAll('.variant-section');
-            var color = '';
-            var size = '';
-            if(variantSections.length > 0){
-                var colorSelected = variantSections[0].querySelector('.btn-variant.selected');
-                if(colorSelected) color = colorSelected.textContent.trim();
-            }
-            if(variantSections.length > 1){
-                var sizeSelected = variantSections[1].querySelector('.btn-variant.selected');
-                if(sizeSelected) size = sizeSelected.textContent.trim();
-            }
-
-            const product = {
-                id: 101,
-                name: `Kaos Polos Pria Cotton Combed 30s Premium${color? ' - '+color:''}${size? ' / '+size:''}`,
-                price: 35000,
-                qty: qty,
-                checked: true,
-                img: "https://via.placeholder.com/100.png?text=Kaos"
-            };
-
-            const existing = itemsInCart.find(i => i.id === product.id && i.name === product.name);
-            if (existing) {
-                existing.qty += product.qty;
-            } else {
-                itemsInCart.push(product);
-            }
-
-            renderCart();
-            // Navigate to checkout page
-            window.location.href = 'checkout.html';
-        });
-    });
-
-    // Close on ESC
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeCart();
-    });
-</script>
-
+</body>
 </html>

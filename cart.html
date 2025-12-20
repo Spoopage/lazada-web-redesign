@@ -5,36 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keranjang Belanja | Lazada Indonesia</title>
     <style>
-        /* =========================================
-           1. CORE STYLES (Konsisten dengan Index/Item)
-           ========================================= */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* CORE STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #f51a76;
-            --secondary: #4965e6;
-            --accent: #cd252d;
-            --dark-bg: #1a1a1a;
-            --light-bg: #ffffff;
-            --text-primary: #333333;
-            --text-secondary: #666666;
-            --border: #e0e0e0;
-            --bg-page: #f5f5f5;
+            --primary: #f51a76; --secondary: #4965e6; --dark-bg: #1a1a1a;
+            --light-bg: #ffffff; --text-primary: #333333; --text-secondary: #666666;
+            --border: #e0e0e0; --bg-page: #f5f5f5;
             --gradient-primary: linear-gradient(135deg, #f51a76 0%, #cd252d 100%);
         }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text-primary); background: var(--bg-page); line-height: 1.5; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--text-primary);
-            background: var(--bg-page);
-            line-height: 1.5;
-        }
-
-        /* ========== NAVBAR (Sama dengan Index) ========== */
+        /* NAVBAR */
         .navbar {
             position: sticky;
             top: 0;
@@ -104,9 +85,7 @@
             font-size: 14px;
         }
 
-        /* =========================================
-           2. CART PAGE SPECIFIC LAYOUT
-           ========================================= */
+        /* LAYOUT CART */
         .cart-container {
             max-width: 1200px;
             margin: 30px auto;
@@ -114,6 +93,7 @@
             display: grid;
             grid-template-columns: 1fr 350px;
             gap: 24px;
+            min-height: 400px;
         }
 
         .cart-title {
@@ -123,7 +103,6 @@
             grid-column: span 2;
         }
 
-        /* LEFT SIDE: Items */
         .cart-main {
             display: flex;
             flex-direction: column;
@@ -144,6 +123,7 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
+            margin-bottom: 20px;
         }
 
         .store-header {
@@ -214,7 +194,6 @@
             font-size: 18px;
         }
 
-        /* Qty Control (Sama dengan Item.html) */
         .quantity-control {
             display: flex;
             border: 1px solid var(--border);
@@ -255,7 +234,7 @@
             color: var(--primary);
         }
 
-        /* RIGHT SIDE: Summary */
+        /* SUMMARY */
         .cart-summary {
             background: white;
             border-radius: 12px;
@@ -263,7 +242,7 @@
             height: fit-content;
             position: sticky;
             top: 100px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .summary-title {
@@ -308,7 +287,14 @@
             transform: scale(1.02);
         }
 
-        /* ========== FOOTER (Sama dengan Index) ========== */
+        .empty-cart-msg {
+            text-align: center;
+            grid-column: span 2;
+            padding: 50px;
+            font-size: 18px;
+            color: #999;
+        }
+
         .footer {
             background: var(--dark-bg);
             color: white;
@@ -317,16 +303,48 @@
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .footer-section h3 { font-size: 14px; margin-bottom: 16px; color: var(--primary); }
-        .footer-section ul { list-style: none; }
-        .footer-section li { margin-bottom: 8px; font-size: 13px; color: #999; }
+        .footer-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
 
         @media (max-width: 900px) {
             .cart-container { grid-template-columns: 1fr; }
@@ -352,74 +370,23 @@
     </nav>
 
     <div class="cart-container">
-        <h1 class="cart-title">Keranjang Belanja (2)</h1>
+        <h1 class="cart-title" id="pageTitle">Keranjang Belanja</h1>
 
-        <div class="cart-main">
-            <div class="cart-header-bar">
-                <input type="checkbox" class="item-checkbox" style="margin-right: 12px;" checked>
-                <span>Pilih Semua</span>
-            </div>
+        <!-- AREA ITEM -->
+        <div class="cart-main" id="cartMainArea">
 
-            <div class="store-group">
-                <div class="store-header">
-                    <input type="checkbox" class="item-checkbox" checked>
-                    <span>Lazada Official Store</span>
-                    <span style="color: var(--primary); font-size: 12px; font-weight: normal; border: 1px solid var(--primary); padding: 0 4px; border-radius: 2px;">LazMall</span>
-                </div>
-
-                <div class="item-row">
-                    <input type="checkbox" class="item-checkbox" checked>
-                    <div class="item-image">👕</div>
-                    <div class="item-details">
-                        <p class="item-name">Kaos Polos Pria Cotton Combed 30s Premium</p>
-                        <p class="item-variant">Warna: Hitam, Ukuran: XL</p>
-                        <div class="item-price-qty">
-                            <span class="item-price">Rp 45.000</span>
-                            <div class="quantity-control">
-                                <button class="btn-qty">-</button>
-                                <input type="text" class="input-qty" value="1">
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
-                        <div class="item-actions">
-                            <button class="btn-action">Hapus</button>
-                            <button class="btn-action">Pindahkan ke Wishlist</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item-row">
-                    <input type="checkbox" class="item-checkbox" checked>
-                    <div class="item-image">📱</div>
-                    <div class="item-details">
-                        <p class="item-name">Pelindung Layar Tempered Glass Anti-Blue Ray</p>
-                        <p class="item-variant">Tipe: iPhone 13 Pro</p>
-                        <div class="item-price-qty">
-                            <span class="item-price">Rp 12.500</span>
-                            <div class="quantity-control">
-                                <button class="btn-qty">-</button>
-                                <input type="text" class="input-qty" value="2">
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
-                        <div class="item-actions">
-                            <button class="btn-action">Hapus</button>
-                            <button class="btn-action">Pindahkan ke Wishlist</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <aside class="cart-summary">
+        <!-- SUMMARY -->
+        <aside class="cart-summary" id="cartSummary">
             <h2 class="summary-title">Ringkasan Pesanan</h2>
             <div class="summary-row">
-                <span>Subtotal (3 item)</span>
-                <span>Rp 70.000</span>
+                <span id="subtotalLabel">Subtotal (0 item)</span>
+                <span id="subtotalValue">Rp 0</span>
             </div>
             <div class="summary-row">
                 <span>Biaya Pengiriman</span>
-                <span style="color: #4caf50;">Gratis</span>
+                <span id="shippingValue" style="color: var(--text-primary);">Rp 9.000</span>
             </div>
             
             <div style="margin-top: 15px; display: flex; gap: 8px;">
@@ -429,50 +396,154 @@
 
             <div class="summary-total">
                 <span>Total</span>
-                <span style="color: var(--primary);">Rp 70.000</span>
+                <span style="color: var(--primary);" id="totalValue">Rp 0</span>
             </div>
 
-            <button class="btn-checkout" onclick="window.location.href='checkout.html'">Buat Pesanan (3)</button>
+            <button class="btn-checkout" id="btnCheckout" onclick="window.location.href='checkout.html'">Buat Pesanan</button>
         </aside>
     </div>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Layanan Pelanggan</h3>
+                <h3>Tentang Lazada</h3>
                 <ul>
-                    <li>Pusat Bantuan</li>
-                    <li>Cara Pembelian</li>
-                    <li>Pengiriman</li>
-                    <li>Kebijakan Pengembalian</li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Jelajahi Lazada</h3>
+                <h3>Kategori</h3>
                 <ul>
-                    <li>Semua Kategori</li>
-                    <li>Lazada Mall</li>
-                    <li>Flash Sale</li>
-                    <li>Promo Hari Ini</li>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Elektronik</a></li>
+                    <li><a href="#">Rumah & Taman</a></li>
+                    <li><a href="#">Kecantikan</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Kontak Kami</h3>
+                <h3>Bantuan</h3>
                 <ul>
-                    <li>Tentang Lazada</li>
-                    <li>Karir</li>
-                    <li>Syarat & Ketentuan</li>
-                    <li>Kebijakan Privasi</li>
+                    <li><a href="#">Pusat Bantuan</a></li>
+                    <li><a href="#">Kontak Kami</a></li>
+                    <li><a href="#">Kebijakan Pengiriman</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Metode Pembayaran</h3>
-                <div style="font-size: 24px; display: flex; gap: 10px; opacity: 0.6;">
-                    💳 🏦 💵
-                </div>
+                <h3>Ikuti Kami</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Lazada Indonesia.</p>
         </div>
     </footer>
 
+    <script>
+        // LOAD DATA DARI LOCALSTORAGE
+        let cartItems = JSON.parse(localStorage.getItem('lazada_cart')) || [];
+        const SHIPPING_COST = 9000;
+        
+        const cartMainArea = document.getElementById('cartMainArea');
+        const pageTitle = document.getElementById('pageTitle');
+        const subtotalLabel = document.getElementById('subtotalLabel');
+        const subtotalValue = document.getElementById('subtotalValue');
+        const shippingValue = document.getElementById('shippingValue');
+        const totalValue = document.getElementById('totalValue');
+        const btnCheckout = document.getElementById('btnCheckout');
+
+        function renderCartPage() {
+            if(cartItems.length === 0) {
+                cartMainArea.innerHTML = `<div class="empty-cart-msg">Keranjang Anda masih kosong. <br><a href="index.html" style="color:var(--primary); font-size:16px;">Mulai Belanja</a></div>`;
+                document.getElementById('cartSummary').style.display = 'none';
+                pageTitle.innerText = `Keranjang Belanja (0)`;
+                return;
+            }
+
+            document.getElementById('cartSummary').style.display = 'block';
+            let html = `
+                <div class="cart-header-bar">
+                    <input type="checkbox" checked style="margin-right: 12px;"> <span>Pilih Semua</span>
+                </div>
+                <div class="store-group">
+                    <div class="store-header">
+                        <input type="checkbox" checked> <span>Lazada Official Store</span>
+                        <span style="color: var(--primary); font-size: 12px; border: 1px solid var(--primary); padding: 0 4px; border-radius: 2px;">LazMall</span>
+                    </div>
+            `;
+
+            let subtotalPrice = 0;
+            let totalQty = 0;
+
+            cartItems.forEach((item, index) => {
+                subtotalPrice += item.price * item.qty;
+                totalQty += item.qty;
+
+                html += `
+                <div class="item-row">
+                    <input type="checkbox" class="item-checkbox" checked>
+                    <div class="item-image">${item.img}</div>
+                    <div class="item-details">
+                        <p class="item-name">${item.name}</p>
+                        <p class="item-variant">${item.variant}</p>
+                        <div class="item-price-qty">
+                            <span class="item-price">Rp ${item.price.toLocaleString('id-ID')}</span>
+                            <div class="quantity-control">
+                                <button class="btn-qty" onclick="updateQty(${index}, -1)">-</button>
+                                <input type="text" class="input-qty" value="${item.qty}" readonly>
+                                <button class="btn-qty" onclick="updateQty(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <button class="btn-action" onclick="deleteItem(${index})">Hapus</button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+
+            html += `</div>`;
+            cartMainArea.innerHTML = html;
+
+            pageTitle.innerText = `Keranjang Belanja (${totalQty})`;
+            subtotalLabel.innerText = `Subtotal (${totalQty} item)`;
+            subtotalValue.innerText = "Rp " + subtotalPrice.toLocaleString('id-ID');
+            shippingValue.innerText = "Rp " + SHIPPING_COST.toLocaleString('id-ID');
+            let grandTotal = subtotalPrice + SHIPPING_COST;
+            totalValue.innerText = "Rp " + grandTotal.toLocaleString('id-ID');
+            
+            btnCheckout.innerText = `Buat Pesanan (${totalQty})`;
+        }
+
+        function updateQty(index, delta) {
+            if(cartItems[index].qty === 1 && delta === -1) {
+                if(confirm("Hapus barang ini?")) deleteItem(index);
+            } else {
+                cartItems[index].qty += delta;
+                saveAndRender();
+            }
+        }
+
+        function deleteItem(index) {
+            cartItems.splice(index, 1);
+            saveAndRender();
+        }
+
+        function saveAndRender() {
+            localStorage.setItem('lazada_cart', JSON.stringify(cartItems));
+            renderCartPage();
+        }
+
+        renderCartPage();
+    </script>
 </body>
 </html>
