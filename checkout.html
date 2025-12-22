@@ -34,12 +34,17 @@
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-secondary);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .logo:hover {
+            color: var(--primary);
         }
 
         .stepper {
@@ -190,7 +195,7 @@
 
     <header class="checkout-header">
         <div class="header-content">
-            <a href="index.html" class="logo">L</a>
+            <a href="cart.html" class="logo">< Kembali</a>
             <div class="stepper">
                 <span class="step active">1. Pengiriman</span> <span>></span> <span class="step">2. Pembayaran</span> <span>></span> <span class="step">3. Selesai</span>
             </div>

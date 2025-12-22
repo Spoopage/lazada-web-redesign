@@ -876,7 +876,9 @@
 
     <nav class="navbar">
         <div class="navbar-content">
-            <div class="navbar-logo" onclick="window.location.href='index.html'">L</div>
+            <div class="navbar-logo" onclick="window.location.href='index.html'" style="display: flex; align-items: center;">
+                <img src="assets/logo.png" alt="Lazada Logo" style="height: 40px; cursor: pointer;">
+            </div>
             <div class="navbar-search">
                 <div class="search-bar">
                     <input type="text" placeholder="Pakaian pria">
@@ -916,8 +918,8 @@
                 <span>Total</span>
                 <span class="cart-total-price" id="cartTotal">Rp 0</span>
             </div>
-            <button class="btn-checkout-sidebar" id="checkoutBtn" onclick="window.location.href='checkout.html'">Checkout</button>
-            <a href="cart.html" class="view-cart-link">Lihat Halaman Troli</a>
+            <button class="btn-checkout-sidebar" id="checkoutBtn" onclick="window.location.href='cart.html'">Checkout</button>
+            <!-- <a href="cart.html" class="view-cart-link">Lihat Halaman Troli</a> -->
         </div>
     </div>
 
@@ -1107,7 +1109,7 @@
         const deleteModal = document.getElementById('deleteModal');
 
         // --- INIT ---
-        renderCart(); // Load cart on startup
+        renderCart();
 
         // --- VARIANT LOGIC ---
         document.querySelectorAll('#optWarna .btn-variant').forEach(btn => {
