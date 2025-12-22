@@ -64,6 +64,11 @@
             border: none;
             outline: none;
             font-size: 14px;
+            background: transparent;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-secondary);
         }
 
         .search-bar button {
@@ -74,6 +79,18 @@
             font-size: 18px;
         }
 
+        .navbar-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-link:hover {
+            color: var(--primary);
+        }
+
         .btn-login {
             padding: 8px 16px;
             border: 2px solid var(--primary);
@@ -82,7 +99,36 @@
             border-radius: 20px;
             font-weight: 600;
             cursor: pointer;
+            transition: all 0.3s ease;
             font-size: 14px;
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-signup {
+            padding: 8px 16px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(245, 26, 118, 0.3);
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
 
         /* LAYOUT CART */
@@ -361,12 +407,16 @@
             </div>
             <div class="navbar-search">
                 <div class="search-bar">
-                    <input type="text" placeholder="Cari di Lazada">
+                    <input type="text" placeholder="Cari produk favorit Anda...">
                     <button onclick="window.location.href='search.html'">🔍</button>
                 </div>
             </div>
             <div class="navbar-actions">
+                <a href="#" class="navbar-link">Kategori</a>
+                <a href="#" class="navbar-link">Promo</a>
+                <a href="#" class="navbar-link">Bantuan</a>
                 <button class="btn-login">Masuk</button>
+                <button class="btn-signup">Daftar</button>
             </div>
         </div>
     </nav>
